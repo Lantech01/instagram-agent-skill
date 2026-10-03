@@ -1,94 +1,107 @@
 ---
 name: ig-comment
 description: >-
-  Write comments on other people's Instagram posts and reels that read as a
-  person with an opinion, not a bot. Use when the user pastes a post or a reel
-  and wants a comment, says "comment on this", "engage with this", "what do I
-  say here", or wants a batch for their daily engagement round.
+  Escreve comentários nos posts e Reels dos outros que soam como uma pessoa com
+  opinião, não como robô. Use quando o usuário colar um post ou um Reels e
+  quiser um comentário, disser "comenta nesse post", "o que eu comento aqui",
+  "escreve um comentário pra esse reels", "quero engajar nesse perfil", ou
+  quiser um lote pra rodada diária de engajamento.
 ---
 
 # ig-comment
 
-Commenting is the highest-leverage twenty minutes on Instagram and the easiest
-to do badly. A comment near the top of a reel with 40,000 views is seen by more
-people than most accounts' own posts, and it is the one place where a stranger
-can tap straight through to a profile.
+Comentar são os vinte minutos de maior retorno no Instagram e os mais fáceis
+de fazer mal. Um comentário no topo de um Reels com 40.000 visualizações é
+visto por mais gente do que a maioria dos posts da maioria das contas, e é o
+único lugar onde um estranho pode tocar e cair direto num perfil.
 
-A generic comment is worse than none. It costs a tap that goes nowhere and it
-marks the account as an engagement-pod account to the one person whose opinion
-mattered, which is the creator.
+Um comentário genérico é pior do que nenhum. Ele gasta um toque que não leva a
+lugar nenhum e marca a conta como conta de grupo de engajamento pra única
+pessoa cuja opinião importava, que é quem fez o post.
 
-## Input
+## Entrada
 
-The user pastes the post or reel text, or a screenshot, with the account name.
-If they give a URL you cannot open, ask them to paste it. Do not use a browser
-tool to scrape the feed and do not post anything.
+O usuário cola o texto do post ou do Reels, ou um print, com o nome da conta.
+Se ele mandar uma URL que você não consegue abrir, peça pra colar. Não use
+ferramenta de navegador pra raspar o feed e não poste nada.
 
-## The nine comment types
+## Os nove tipos de comentário
 
-Pick by what the post actually is. Never default to type 1.
+Escolha pelo que o post é de verdade. Nunca caia no tipo 1 por padrão.
 
-| # | type | when | shape |
+| # | tipo | quando | formato |
 | --- | --- | --- | --- |
-| 1 | **Add a datum** | the post makes a claim you can support with a number | "Same for us: 40% of..." |
-| 2 | **Add the missing case** | the post is right but incomplete | "This holds until {condition}." |
-| 3 | **Respectful disagree** | you genuinely think it is wrong | name the agreement first, then the fork |
-| 4 | **Extend one line** | one line in it is the good one | quote it, build on it |
-| 5 | **Ask the real question** | the post skipped the hard part | one question, specific |
-| 6 | **The receipt** | you have done the thing they described | what happened, two sentences |
-| 7 | **The correction** | there is a factual error | be right, be brief, be kind, be sure |
-| 8 | **The reframe** | right facts, wrong frame | "Another way to read this:" |
-| 9 | **The one-liner** | the post needs nothing, you want presence | under 10 words, must be funny or true |
+| 1 | **Acrescente um dado** | o post faz uma afirmação que você consegue sustentar com um número | "Aqui foi igual: 40% dos..." |
+| 2 | **Acrescente o caso que faltou** | o post está certo, mas incompleto | "Isso vale até {condição}." |
+| 3 | **Discorde com respeito** | você acha de verdade que está errado | diga primeiro onde concorda, depois onde diverge |
+| 4 | **Estenda uma frase** | uma frase do post é a boa | cite, construa em cima |
+| 5 | **Faça a pergunta de verdade** | o post pulou a parte difícil | uma pergunta, específica |
+| 6 | **O relato** | você já fez o que o post descreve | o que aconteceu, em duas frases |
+| 7 | **A correção** | tem um erro factual | esteja certo, seja breve, seja gentil, tenha certeza |
+| 8 | **O outro ângulo** | fatos certos, leitura errada | "Outro jeito de ler isso:" |
+| 9 | **A frase curta** | o post não precisa de nada, você quer marcar presença | menos de 10 palavras, tem que ser engraçada ou verdadeira |
 
-## Rules
+## Regras
 
-- **One to three sentences.** Instagram comments are read in a narrow column
-  under a video. A paragraph gets collapsed behind "more" and nobody taps it.
-- **Never open with** "Great post", "Love this", "So true", "This 👏", "Needed
-  this today", or the creator's first name with an exclamation mark. All of
-  them are invisible.
-- **No emoji-only comments** and no emoji as the first character.
-- **Never restate the reel.** Everybody watching just watched it.
-- **One idea.** A comment with two points reads as a hijack.
-- **Say the specific thing.** If the comment could sit under any post on the
-  topic, it is not a comment, it is noise.
-- **No pitching, ever.** Not the offer, not the link, not "check out my page".
-  That is the fastest way to be blocked by exactly the person you were trying
-  to reach.
-- **Early matters more here than anywhere.** A comment in the first hour on a
-  reel that then travels gets carried with it.
+- **Uma a três frases.** Comentário no Instagram é lido numa coluna estreita
+  embaixo de um vídeo. Um parágrafo fica escondido atrás do "mais" e ninguém
+  toca.
+- **Nunca abra com** "Amei", "Que conteúdo!", "Perfeito", "Arrasou", "Isso
+  👏", "Precisava ler isso hoje", "Salvando!" ou o primeiro nome de quem
+  postou com ponto de exclamação. Todos são invisíveis.
+- **Nada de comentário só com emoji** e nada de emoji como primeiro caractere.
+  "😍😍😍" e "🔥🔥" estão embaixo de todo post brasileiro, e é exatamente por
+  isso que ninguém lê.
+- **"kkkk" sozinho é emoji com outro nome.** Se a piada foi boa, diga qual
+  parte. Rir no fim de uma frase que tem conteúdo tudo bem; rir no lugar da
+  frase, não.
+- **Escreva como gente fala.** "Pra", "tá", "a gente". Um comentário com cara
+  de e-mail corporativo destoa embaixo de um Reels tanto quanto um robô.
+- **Nunca resuma o Reels.** Todo mundo que está vendo acabou de assistir.
+- **Uma ideia.** Um comentário com dois pontos parece que está sequestrando o
+  post.
+- **Diga a coisa específica.** Se o comentário caberia embaixo de qualquer
+  post sobre o assunto, não é comentário, é ruído.
+- **Nunca venda nada.** Nem a oferta, nem o link, nem "dá uma olhada no meu
+  perfil", nem "segue que eu sigo de volta". É o jeito mais rápido de ser
+  bloqueado justamente pela pessoa que você queria alcançar.
+- **Chegar cedo importa mais aqui do que em qualquer outro lugar.** Um
+  comentário na primeira hora de um Reels que depois viraliza vai junto com
+  ele.
 
-## Output
+## Saída
 
-Give **two options of different types**, labelled, plus one line on which you
-would post and why. Run both through `/ig-human` first: comments are short, so
-an em dash or a stock phrase is proportionally louder than it is in a caption.
+Dê **duas opções de tipos diferentes**, com rótulo, mais uma linha dizendo
+qual você postaria e por quê. Passe as duas pelo `/ig-human` antes: comentário
+é curto, então um travessão ou uma frase pronta grita proporcionalmente mais do
+que numa legenda.
 
 ```
-COMMENT OPTIONS  (on @acct's reel about pricing)
+OPÇÕES DE COMENTÁRIO  (no Reels da @conta sobre preço)
 
-[6 · Receipt]
-We raised ours 40% last March and lost exactly one client, who was the one
-taking up half the inbox. Took eight months to stop being scared of it.
+[6 · Relato]
+A gente subiu o preço 40% em março do ano passado e perdeu um cliente só, justo
+o que ocupava metade da caixa de entrada. Levei oito meses pra parar de ter
+medo disso.
 
-[3 · Respectful disagree]
-Agree on the anchoring. The part I would push back on is doing it mid-project.
-We tried that and it cost us a renewal that was otherwise fine.
+[3 · Discordância respeitosa]
+Concordo com a ancoragem. Onde eu discordo é fazer isso no meio do projeto. A
+gente tentou e perdeu uma renovação que estava tranquila.
 
-Post the first. It concedes something and it has a number in it.
+Posta o primeiro. Ele admite uma coisa e tem um número.
 ```
 
-## Batch mode
+## Modo lote
 
-For an engagement round, ask for the 5 to 10 posts as pasted text in one
-message, return one comment each in a single block, and keep a running note in
-`~/.claude/instagram/log.md` of who has been commented on this week.
-Commenting on the same three accounts every day is visible and it looks like
-exactly what it is.
+Pra uma rodada de engajamento, peça os 5 a 10 posts como texto colado numa
+mensagem só, devolva um comentário pra cada num bloco único e mantenha uma
+nota corrente em `~/.claude/instagram/log.md` de quem já recebeu comentário
+nesta semana. Comentar nas mesmas três contas todo dia aparece, e parece
+exatamente o que é.
 
-## Never
+## Nunca
 
-Do not auto-post, do not automate comments, and do not use a browser tool to
-publish on the user's behalf. Automated engagement violates Instagram's Terms
-of Use and gets accounts action-blocked. This skill writes the comment. The
-user posts it.
+Não poste automaticamente, não automatize comentários e não use ferramenta de
+navegador pra publicar no lugar do usuário. Engajamento automatizado viola os
+Termos de Uso do Instagram e leva a conta a bloqueio de ação. Esta skill
+escreve o comentário. Quem posta é o usuário.
