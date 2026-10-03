@@ -67,7 +67,10 @@ SPOKEN_NUMBERS = {
     "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quatorze",
     "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte",
     "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta",
-    "noventa", "cem", "cento", "duzentos", "trezentos", "quinhentos", "mil",
+    "noventa", "cem", "cento", "duzentos", "duzentas", "trezentos", "trezentas",
+    "quatrocentos", "quatrocentas", "quinhentos", "quinhentas", "seiscentos",
+    "seiscentas", "setecentos", "setecentas", "oitocentos", "oitocentas",
+    "novecentos", "novecentas", "mil",
     "milhão", "milhao", "milhões", "milhoes", "bilhão", "bilhões", "dúzia",
     "metade", "dobro", "triplo", "dezenas", "centenas",
 }
