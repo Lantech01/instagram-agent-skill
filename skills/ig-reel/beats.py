@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 """
-beats.py - turn a Reel script into a timed beat sheet before you record it.
+beats.py - transforma um roteiro de Reels num roteiro cronometrado antes de
+você gravar.
 
-Estimates how long each line takes to say, stacks them into timecodes, and
-flags the four things that kill a Reel in the edit: a hook that runs past the
-three-second mark, a beat long enough for the viewer to leave, a run of lines
-with nothing concrete in them, and a total length that does not match what you
-said you were making.
+Estima quanto tempo cada frase leva pra ser dita, empilha tudo em minutagem e
+aponta as quatro coisas que matam um Reels na edição: um gancho que passa da
+marca de três segundos, uma batida longa o bastante pra pessoa ir embora, uma
+sequência de frases sem nada concreto, e uma duração que não bate com o que
+você disse que ia fazer.
 
-The timings are an estimate from word count at a words-per-minute rate. They
-are close enough to plan an edit and not a substitute for recording it. Set
-your own rate with --wpm once you have timed yourself reading a script out
-loud: most people land between 150 and 200, and the default here is 165.
+Os tempos são uma estimativa pela contagem de palavras num ritmo de palavras
+por minuto (ppm). Servem pra planejar a edição, não substituem gravar. O
+padrão é 165 ppm. Calibre com --ppm depois de cronometrar você mesmo lendo um
+roteiro em voz alta: palavra em português costuma ser mais comprida que em
+inglês, e o seu ritmo é o que vale.
 
-Usage
-  python3 beats.py script.txt
-  python3 beats.py script.txt --target 30
-  python3 beats.py script.txt --wpm 185 --target 45
+Uso
+  python3 beats.py roteiro.txt
+  python3 beats.py roteiro.txt --target 30
+  python3 beats.py roteiro.txt --ppm 150 --target 45
   pbpaste | python3 beats.py -
-  python3 beats.py script.txt --json
+  python3 beats.py roteiro.txt --json
 """
 
 import argparse
@@ -26,39 +28,77 @@ import json
 import re
 import sys
 
-WORD_RE = re.compile(r"[A-Za-z0-9$%'’-]+")
+WORD_RE = re.compile(r"[$]?[^\W_](?:[^\W_]|[$%'’-])*")
 SENT_RE = re.compile(r"[^.!?]+[.!?]*")
-CONCRETE_RE = re.compile(r"\$\s?\d|\b\d[\d,.]*\b|(?<!^)\b[A-Z][a-z]{2,}\b", re.MULTILINE)
+UPPER = "A-ZÀ-ÖØ-Þ"
+LOWER = "a-zß-öø-ÿ"
+# Concreto: dinheiro, um número com dígitos, ou um nome próprio no meio da
+# frase (a primeira palavra de cada frase não conta).
+CONCRETE_RE = re.compile(
+    rf"(?:R|US)?\$\s?\d|\b\d[\d.,]*\b|(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b",
+    re.MULTILINE)
+# Número falado também é concreto: "cinco horas" é tão checável quanto "5h".
+SPOKEN_NUMBERS = {
+    "dois", "duas", "três", "tres", "quatro", "cinco", "seis", "sete",
+    "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quatorze",
+    "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte",
+    "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta",
+    "noventa", "cem", "cento", "duzentos", "duzentas", "trezentos", "trezentas",
+    "quatrocentos", "quatrocentas", "quinhentos", "quinhentas", "seiscentos",
+    "seiscentas", "setecentos", "setecentas", "oitocentos", "oitocentas",
+    "novecentos", "novecentas", "mil",
+    "milhão", "milhões", "bilhão", "bilhões", "dúzia", "metade", "dobro",
+    "triplo", "reais",
+}
+# Palavras que não contam como eco entre o gancho e o final.
 STOPWORDS = {
-    "the", "a", "an", "and", "or", "but", "if", "of", "to", "in", "on", "for",
-    "with", "that", "this", "it", "is", "are", "was", "were", "be", "been",
-    "you", "your", "i", "my", "me", "we", "our", "they", "them", "he", "she",
-    "so", "just", "not", "no", "do", "did", "does", "have", "has", "had",
-    "will", "can", "at", "as", "by", "from", "out", "up", "off", "one", "all",
+    "o", "a", "os", "as", "um", "uma", "uns", "umas", "e", "ou", "mas", "se",
+    "de", "do", "da", "dos", "das", "em", "no", "na", "nos", "nas", "num",
+    "numa", "por", "pelo", "pela", "pelos", "pelas", "para", "pra", "pro",
+    "pras", "pros", "com", "sem", "sobre", "que", "quem", "qual", "como",
+    "quando", "onde", "porque", "isso", "isto", "esse", "essa", "este",
+    "esta", "aquele", "aquela", "ele", "ela", "eles", "elas", "eu", "me",
+    "mim", "meu", "minha", "meus", "minhas", "você", "vc", "te", "seu", "sua",
+    "seus", "suas", "nós", "nosso", "nossa", "gente", "é", "era", "foi",
+    "ser", "são", "está", "tá", "tô", "estou", "tem", "ter", "tinha", "vai",
+    "vou", "já", "só", "não", "sim", "também", "mais", "muito", "muita", "aí",
+    "lá", "aqui", "então", "né", "tipo", "ao", "aos", "à", "às", "lhe",
 }
 
-HOOK_WINDOW = 3.0        # seconds. Past this, the thumb has already decided.
-MAX_BEAT = 4.0           # seconds on one idea with no change on screen.
-ABSTRACT_RUN = 3         # beats in a row with nothing checkable in them.
+HOOK_WINDOW = 3.0        # segundos. Depois disso, o dedão já decidiu.
+MAX_BEAT = 4.0           # segundos numa ideia só, sem nada mudar na tela.
+ABSTRACT_RUN = 3         # batidas seguidas sem nada checável.
+
+
+def br(x, nd=1):
+    """Número no formato brasileiro: vírgula decimal."""
+    return f"{x:.{nd}f}".replace(".", ",")
 
 
 def words(text):
-    # "$18,000" is one word when it is spoken, so it is one word here too.
-    return WORD_RE.findall(re.sub(r"(?<=\d),(?=\d)", "", text))
+    # "R$ 18.000" é dito como um valor só, então conta como uma palavra só.
+    text = re.sub(r"(?<=\d)[.,](?=\d)", "", text)
+    text = re.sub(r"((?:R|US)\$)\s+(?=\d)", r"\1", text)
+    return WORD_RE.findall(text)
 
 
 def pretty(token):
-    """Put the thousands separator back for display."""
-    return re.sub(r"(\d)(?=(\d{3})+$)", r"\1,", token)
+    """Devolve o separador de milhar pra exibição."""
+    return re.sub(r"(\d)(?=(\d{3})+$)", r"\1.", token)
+
+
+def concrete(text):
+    spoken = sum(1 for w in words(text) if w.lower() in SPOKEN_NUMBERS)
+    return len(CONCRETE_RE.findall(text)) + spoken
 
 
 def tc(seconds):
     m, s = divmod(seconds, 60)
-    return f"{int(m)}:{s:04.1f}"
+    return f"{int(m)}:{br(s).zfill(4)}"
 
 
 def split_beats(raw, wps):
-    """One line is one beat, unless a line is too long to be one."""
+    """Uma linha é uma batida, a não ser que a linha seja longa demais pra isso."""
     beats = []
     for line in [l.strip() for l in raw.splitlines()]:
         if not line:
@@ -66,8 +106,8 @@ def split_beats(raw, wps):
         if len(words(line)) / wps <= MAX_BEAT * 1.5:
             beats.append(line)
             continue
-        # Long paragraph: break it at sentence ends so the timings mean
-        # something, and let the report say it was split.
+        # Parágrafo longo: quebra no fim das frases pra minutagem fazer
+        # sentido, e o relatório mostra que foi quebrado.
         parts = [p.strip() for p in SENT_RE.findall(line) if p.strip()]
         buf = ""
         for part in parts:
@@ -98,41 +138,42 @@ def analyse(raw, wpm=165, target=None):
             "dur": round(dur, 2),
             "words": n,
             "text": text,
-            "concrete": len(CONCRETE_RE.findall(text)),
+            "concrete": concrete(text),
             "label": "",
             "flags": [],
         })
         clock += dur
-    total = clock
+    total = round(clock, 2)      # o mesmo número no cabeçalho e nas notas
 
-    # Label the structural positions a Reel is actually built around.
+    # Marca as posições em torno das quais um Reels é construído.
     for r in rows:
         if r["n"] == 1 or r["start"] + r["dur"] <= HOOK_WINDOW:
-            r["label"] = "HOOK"
-    rows[-1]["label"] = "CTA" if rows[-1]["label"] != "HOOK" else "HOOK/CTA"
+            r["label"] = "GANCHO"
+    rows[-1]["label"] = "CTA" if rows[-1]["label"] != "GANCHO" else "GANCHO/CTA"
     half = total / 2
     for r in rows:
         if not r["label"] and r["start"] <= half < r["start"] + r["dur"]:
-            r["label"] = "MID"
+            r["label"] = "MEIO"
 
     notes = []
     if rows[0]["dur"] > HOOK_WINDOW:
-        rows[0]["flags"].append(f"hook runs {rows[0]['dur']:.1f}s, past the {HOOK_WINDOW:.0f}s mark")
-        notes.append(f"Beat 1 takes {rows[0]['dur']:.1f}s to say. Cut it to "
-                     f"{int(HOOK_WINDOW * wps)} words or fewer, or the hook lands after "
-                     "the decision has been made.")
+        rows[0]["flags"].append(f"o gancho leva {br(rows[0]['dur'])}s, passa da marca de "
+                                f"{HOOK_WINDOW:.0f}s")
+        notes.append(f"A batida 1 leva {br(rows[0]['dur'])}s pra ser dita. Corte pra "
+                     f"{int(HOOK_WINDOW * wps)} palavras ou menos, ou o gancho chega depois "
+                     "que a decisão já foi tomada.")
     if rows[0]["concrete"] == 0:
-        notes.append("Beat 1 has no number and no name in it. Hooks without something "
-                     "checkable are the ones that get scrolled.")
+        notes.append("A batida 1 não tem número nem nome. Gancho sem nada verificável é o "
+                     "que a pessoa passa.")
 
     for r in rows:
         if r["dur"] > MAX_BEAT:
-            r["flags"].append(f"{r['dur']:.1f}s on one beat")
+            r["flags"].append(f"{br(r['dur'])}s numa batida só")
     long_beats = [r["n"] for r in rows if r["dur"] > MAX_BEAT]
     if long_beats:
-        notes.append(f"Beat(s) {', '.join(map(str, long_beats))} run past {MAX_BEAT:.0f}s. "
-                     "Either split the line or change what is on screen inside it. "
-                     "A static frame is where people leave.")
+        notes.append(f"Batida(s) {', '.join(map(str, long_beats))} passam de "
+                     f"{MAX_BEAT:.0f}s. Divida a frase ou mude o que está na tela no meio "
+                     "dela. Quadro parado é onde as pessoas saem.")
 
     run, start = 0, None
     for r in rows:
@@ -140,35 +181,36 @@ def analyse(raw, wpm=165, target=None):
             run += 1
             start = start if start is not None else r["n"]
             if run == ABSTRACT_RUN:
-                notes.append(f"Beats {start}-{r['n']} have nothing concrete in them. "
-                             "Put a number, a name or a price in one of them.")
+                notes.append(f"As batidas {start}-{r['n']} não têm nada concreto. Coloque "
+                             "um número, um nome ou um preço em uma delas.")
         else:
             run, start = 0, None
 
-    # Does the last line hand you back to the first one?
+    # A última frase devolve a pessoa pra primeira?
     first = {w.lower() for w in words(rows[0]["text"]) if w.lower() not in STOPWORDS}
     last = {w.lower() for w in words(rows[-1]["text"]) if w.lower() not in STOPWORDS}
     loop = sorted(pretty(w) for w in first & last)
     if loop:
-        notes.append(f"Loops: the last beat repeats \"{', '.join(loop[:3])}\" from the hook. "
-                     "Second watches are free reach.")
+        notes.append(f"Loop: a última batida repete \"{', '.join(loop[:3])}\" do gancho. "
+                     "Segunda visualização é alcance de graça.")
     else:
-        notes.append("No loop. The last beat shares no word with the hook, so the video "
-                     "ends flat. Echoing one word from beat 1 is the cheapest replay you get.")
+        notes.append("Sem loop. A última batida não repete nenhuma palavra do gancho, então "
+                     "o vídeo termina seco. Repetir uma palavra da batida 1 é o replay mais "
+                     "barato que existe.")
 
     if target:
         delta = total - target
         if abs(delta) <= target * 0.1:
-            notes.append(f"Length is on target ({total:.1f}s against {target}s).")
+            notes.append(f"Duração dentro da meta ({br(total)}s para {target:g}s).")
         elif delta > 0:
-            notes.append(f"{delta:.1f}s over target. Cut about {int(delta * wps)} words.")
+            notes.append(f"{br(delta)}s acima da meta. Corte umas {int(delta * wps)} palavras.")
         else:
-            notes.append(f"{-delta:.1f}s under target. Either add {int(-delta * wps)} words "
-                         "or shoot it short. Short is usually right.")
+            notes.append(f"{br(-delta)}s abaixo da meta. Acrescente {int(-delta * wps)} "
+                         "palavras ou grave mais curto. Mais curto costuma ser o certo.")
 
     return {
         "wpm": wpm, "target": target,
-        "total_seconds": round(total, 2),
+        "total_seconds": total,
         "total_words": sum(r["words"] for r in rows),
         "beats": rows,
         "notes": notes,
@@ -176,33 +218,36 @@ def analyse(raw, wpm=165, target=None):
 
 
 def render(a, out=sys.stdout):
-    head = (f"BEAT SHEET  ·  {a['total_words']} words  ·  ~{a['total_seconds']:.1f}s "
-            f"at {a['wpm']} wpm" + (f"  ·  target {a['target']}s" if a["target"] else ""))
+    head = (f"ROTEIRO CRONOMETRADO  ·  {a['total_words']} palavras  ·  "
+            f"~{br(a['total_seconds'])}s a {a['wpm']:g} ppm"
+            + (f"  ·  meta {a['target']:g}s" if a["target"] else ""))
     print("\n" + head, file=out)
-    print("=" * max(len(head), 72), file=out)
+    print("=" * max(len(head), 76), file=out)
     for r in a["beats"]:
-        label = f"{r['label']:<8}" if r["label"] else " " * 8
-        print(f"  {tc(r['start'])}  {r['dur']:4.1f}s  {label}{r['text']}", file=out)
+        label = f"{r['label']:<11}" if r["label"] else " " * 11
+        print(f"  {tc(r['start'])}  {br(r['dur']):>4}s  {label}{r['text']}", file=out)
         for f in r["flags"]:
-            print(f"  {'':>6}  {'':>5}  {'':<8}^ {f}", file=out)
-    print("-" * max(len(head), 72), file=out)
+            print(f"  {'':>6}  {'':>5}  {'':<11}^ {f}", file=out)
+    print("-" * max(len(head), 76), file=out)
     for n in a["notes"]:
         print(f"  - {n}", file=out)
     print("", file=out)
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Time a Reel script into a beat sheet.")
-    ap.add_argument("input", nargs="?", default="-", help="script file, or - for stdin")
-    ap.add_argument("--wpm", type=float, default=165, help="speaking rate (default 165)")
-    ap.add_argument("--target", type=float, help="target length in seconds")
+    ap = argparse.ArgumentParser(description="Cronometra um roteiro de Reels batida por batida.")
+    ap.add_argument("input", nargs="?", default="-", help="arquivo do roteiro, ou - pra stdin")
+    ap.add_argument("--ppm", "--wpm", dest="wpm", type=float, default=165,
+                    help="ritmo de fala em palavras por minuto (padrão 165)")
+    ap.add_argument("--target", "--meta", dest="target", type=float,
+                    help="duração alvo em segundos")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
     raw = sys.stdin.read() if args.input == "-" else open(args.input, encoding="utf-8").read()
     a = analyse(raw, wpm=args.wpm, target=args.target)
     if not a:
-        print("empty script", file=sys.stderr)
+        print("roteiro vazio", file=sys.stderr)
         sys.exit(2)
     if args.json:
         print(json.dumps(a, indent=2, ensure_ascii=False))

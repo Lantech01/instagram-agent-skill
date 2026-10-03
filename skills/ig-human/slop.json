@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "note": "Lexicon used by humanize.py and detect.py. Replacements are plain-English and keep the sentence grammatical. The last block of each list is Instagram-specific: caption and voiceover slop that does not show up on other platforms. Edit freely - it is meant to be yours.",
+  "version": "1.0-ptbr",
+  "note": "Léxico usado pelo humanize.py e pelo detect.py, em português do Brasil. As substituições são palavras simples e mantêm a frase gramatical. \"replace\": \"\" apaga o termo. \"replace\": null quer dizer só sinalizar: o termo conta na nota de clichê e aparece no relatório, mas o texto não muda. Usamos null sempre que nenhuma troca fica certa em todo contexto (conjugação, concordância, preposição, sentido literal). O último bloco de cada lista é específico do Instagram Brasil: os clichês de legenda e de narração de Reels que não aparecem em outras plataformas. Edite à vontade, o arquivo foi feito pra ser seu.",
   "invisible": [
     {
       "cp": "U+200B",
@@ -96,930 +96,1237 @@
   "typographic": [
     {
       "from": "—",
-      "name": "EM DASH",
+      "name": "TRAVESSÃO",
       "to": ", "
     },
     {
       "from": "–",
-      "name": "EN DASH",
+      "name": "MEIA-RISCA",
       "to": "-"
     },
     {
       "from": "‘",
-      "name": "LEFT SINGLE QUOTE",
+      "name": "ASPA SIMPLES CURVA DE ABERTURA",
       "to": "'"
     },
     {
       "from": "’",
-      "name": "RIGHT SINGLE QUOTE",
+      "name": "ASPA SIMPLES CURVA DE FECHAMENTO",
       "to": "'"
     },
     {
       "from": "“",
-      "name": "LEFT DOUBLE QUOTE",
+      "name": "ASPA CURVA DE ABERTURA",
       "to": "\""
     },
     {
       "from": "”",
-      "name": "RIGHT DOUBLE QUOTE",
+      "name": "ASPA CURVA DE FECHAMENTO",
       "to": "\""
     },
     {
       "from": "…",
-      "name": "HORIZONTAL ELLIPSIS",
+      "name": "RETICÊNCIAS (UM CARACTERE)",
       "to": "..."
     },
     {
       "from": "′",
-      "name": "PRIME",
+      "name": "PLICA",
       "to": "'"
     },
     {
       "from": "·",
-      "name": "MIDDLE DOT",
+      "name": "PONTO MÉDIO",
       "to": "-"
     },
     {
       "from": "•",
-      "name": "BULLET",
+      "name": "MARCADOR",
       "to": "-"
     },
     {
       "from": "→",
-      "name": "RIGHTWARDS ARROW",
+      "name": "SETA PARA A DIREITA",
       "to": "->"
     }
   ],
   "words": [
     {
-      "find": "delve into",
-      "replace": "look at",
-      "family": "verbs"
+      "find": "alavancar",
+      "replace": "melhorar",
+      "family": "verbos"
     },
     {
-      "find": "delve",
-      "replace": "look",
-      "family": "verbs"
+      "find": "alavancando",
+      "replace": "melhorando",
+      "family": "verbos"
     },
     {
-      "find": "dive deep into",
-      "replace": "get into",
-      "family": "verbs"
+      "find": "alavanque",
+      "replace": "melhore",
+      "family": "verbos"
     },
     {
-      "find": "deep dive",
-      "replace": "breakdown",
-      "family": "nouns"
+      "find": "potencializar",
+      "replace": "melhorar",
+      "family": "verbos"
     },
     {
-      "find": "leverage",
-      "replace": "use",
-      "family": "verbs"
+      "find": "potencializa",
+      "replace": "melhora",
+      "family": "verbos"
     },
     {
-      "find": "leveraging",
-      "replace": "using",
-      "family": "verbs"
+      "find": "potencializando",
+      "replace": "melhorando",
+      "family": "verbos"
+    },
+    {
+      "find": "potencialize",
+      "replace": "melhore",
+      "family": "verbos"
+    },
+    {
+      "find": "desvendar",
+      "replace": "entender",
+      "family": "verbos"
+    },
+    {
+      "find": "desvende",
+      "replace": "entenda",
+      "family": "verbos"
+    },
+    {
+      "find": "fomentar",
+      "replace": "incentivar",
+      "family": "verbos"
+    },
+    {
+      "find": "revolucionar",
+      "replace": "mudar",
+      "family": "verbos"
+    },
+    {
+      "find": "revolucionou",
+      "replace": "mudou",
+      "family": "verbos"
+    },
+    {
+      "find": "utilizar",
+      "replace": "usar",
+      "family": "verbos"
+    },
+    {
+      "find": "utiliza",
+      "replace": "usa",
+      "family": "verbos"
+    },
+    {
+      "find": "utilizando",
+      "replace": "usando",
+      "family": "verbos"
     },
     {
       "find": "utilize",
       "replace": "use",
-      "family": "verbs"
+      "family": "verbos"
     },
     {
-      "find": "utilizing",
-      "replace": "using",
-      "family": "verbs"
+      "find": "utilizado",
+      "replace": "usado",
+      "family": "verbos"
     },
     {
-      "find": "harness",
-      "replace": "use",
-      "family": "verbs"
+      "find": "utilizada",
+      "replace": "usada",
+      "family": "verbos"
     },
     {
-      "find": "embark on",
-      "replace": "start",
-      "family": "verbs"
+      "find": "utilizam",
+      "replace": "usam",
+      "family": "verbos"
     },
     {
-      "find": "foster",
-      "replace": "build",
-      "family": "verbs"
+      "find": "utilizou",
+      "replace": "usou",
+      "family": "verbos"
     },
     {
-      "find": "facilitate",
-      "replace": "help",
-      "family": "verbs"
+      "find": "proporcionar",
+      "replace": "oferecer",
+      "family": "verbos"
     },
     {
-      "find": "showcase",
-      "replace": "show",
-      "family": "verbs"
+      "find": "proporciona",
+      "replace": "oferece",
+      "family": "verbos"
     },
     {
-      "find": "unlock",
-      "replace": "get",
-      "family": "verbs"
+      "find": "proporcionam",
+      "replace": "oferecem",
+      "family": "verbos"
     },
     {
-      "find": "elevate",
-      "replace": "improve",
-      "family": "verbs"
+      "find": "proporcionou",
+      "replace": "ofereceu",
+      "family": "verbos"
     },
     {
-      "find": "streamline",
-      "replace": "simplify",
-      "family": "verbs"
+      "find": "desempenha um papel",
+      "replace": "tem um papel",
+      "family": "verbos"
     },
     {
-      "find": "spearhead",
-      "replace": "lead",
-      "family": "verbs"
+      "find": "desempenham um papel",
+      "replace": "têm um papel",
+      "family": "verbos"
     },
     {
-      "find": "underscore",
-      "replace": "show",
-      "family": "verbs"
+      "find": "mergulhar",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "underscores",
-      "replace": "shows",
-      "family": "verbs"
+      "find": "mergulhe",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "cultivate",
-      "replace": "build",
-      "family": "verbs"
+      "find": "navegar",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "amplify",
-      "replace": "boost",
-      "family": "verbs"
+      "find": "aprofundar",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "curate",
-      "replace": "pick",
-      "family": "verbs"
+      "find": "desbloquear",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "curated",
-      "replace": "picked",
-      "family": "verbs"
+      "find": "desbloqueie",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "empower",
-      "replace": "let",
-      "family": "verbs"
+      "find": "impulsionar",
+      "replace": null,
+      "family": "verbos"
     },
     {
-      "find": "revolutionize",
-      "replace": "change",
-      "family": "verbs"
+      "find": "robusto",
+      "replace": "sólido",
+      "family": "adjetivos"
     },
     {
-      "find": "transformative",
-      "replace": "big",
-      "family": "adjectives"
+      "find": "robusta",
+      "replace": "sólida",
+      "family": "adjetivos"
     },
     {
-      "find": "robust",
-      "replace": "solid",
-      "family": "adjectives"
+      "find": "robustos",
+      "replace": "sólidos",
+      "family": "adjetivos"
     },
     {
-      "find": "seamless",
-      "replace": "clean",
-      "family": "adjectives"
+      "find": "robustas",
+      "replace": "sólidas",
+      "family": "adjetivos"
     },
     {
-      "find": "seamlessly",
-      "replace": "cleanly",
-      "family": "adjectives"
+      "find": "meticuloso",
+      "replace": "cuidadoso",
+      "family": "adjetivos"
     },
     {
-      "find": "pivotal",
-      "replace": "key",
-      "family": "adjectives"
+      "find": "meticulosa",
+      "replace": "cuidadosa",
+      "family": "adjetivos"
+    },
+    {
+      "find": "meticulosos",
+      "replace": "cuidadosos",
+      "family": "adjetivos"
+    },
+    {
+      "find": "meticulosas",
+      "replace": "cuidadosas",
+      "family": "adjetivos"
+    },
+    {
+      "find": "fascinante",
+      "replace": "interessante",
+      "family": "adjetivos"
+    },
+    {
+      "find": "fascinantes",
+      "replace": "interessantes",
+      "family": "adjetivos"
+    },
+    {
+      "find": "primordial",
+      "replace": "importante",
+      "family": "adjetivos"
+    },
+    {
+      "find": "imprescindível",
+      "replace": "importante",
+      "family": "adjetivos"
+    },
+    {
+      "find": "imprescindíveis",
+      "replace": "importantes",
+      "family": "adjetivos"
     },
     {
       "find": "crucial",
-      "replace": "important",
-      "family": "adjectives"
+      "replace": "importante",
+      "family": "adjetivos"
     },
     {
-      "find": "vital",
-      "replace": "important",
-      "family": "adjectives"
+      "find": "cruciais",
+      "replace": "importantes",
+      "family": "adjetivos"
     },
     {
-      "find": "comprehensive",
-      "replace": "complete",
-      "family": "adjectives"
+      "find": "impactante",
+      "replace": "forte",
+      "family": "adjetivos"
     },
     {
-      "find": "cutting-edge",
-      "replace": "new",
-      "family": "adjectives"
+      "find": "impactantes",
+      "replace": "fortes",
+      "family": "adjetivos"
     },
     {
-      "find": "game-changing",
-      "replace": "big",
-      "family": "adjectives"
+      "find": "inúmeros",
+      "replace": "muitos",
+      "family": "adjetivos"
     },
     {
-      "find": "game-changer",
-      "replace": "big deal",
-      "family": "nouns"
+      "find": "inúmeras",
+      "replace": "muitas",
+      "family": "adjetivos"
     },
     {
-      "find": "groundbreaking",
-      "replace": "new",
-      "family": "adjectives"
+      "find": "é de suma importância",
+      "replace": "é muito importante",
+      "family": "adjetivos"
     },
     {
-      "find": "unparalleled",
-      "replace": "unmatched",
-      "family": "adjectives"
+      "find": "é de extrema importância",
+      "replace": "é muito importante",
+      "family": "adjetivos"
     },
     {
-      "find": "invaluable",
-      "replace": "useful",
-      "family": "adjectives"
+      "find": "de suma importância",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "meticulous",
-      "replace": "careful",
-      "family": "adjectives"
+      "find": "de extrema importância",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "meticulously",
-      "replace": "carefully",
-      "family": "adjectives"
+      "find": "abrangente",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "myriad of",
-      "replace": "many",
-      "family": "adjectives"
+      "find": "inovador",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "myriad",
-      "replace": "many",
-      "family": "adjectives"
+      "find": "inovadora",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "multifaceted",
-      "replace": "complicated",
-      "family": "adjectives"
+      "find": "inovadoras",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "holistic",
-      "replace": "whole",
-      "family": "adjectives"
+      "find": "revolucionário",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "bespoke",
-      "replace": "custom",
-      "family": "adjectives"
+      "find": "revolucionária",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "innovative",
-      "replace": "new",
-      "family": "adjectives"
+      "find": "transformador",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "profound",
-      "replace": "big",
-      "family": "adjectives"
+      "find": "transformadora",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "remarkable",
-      "replace": "notable",
-      "family": "adjectives"
+      "find": "disruptivo",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "compelling",
-      "replace": "convincing",
-      "family": "adjectives"
+      "find": "holístico",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "tapestry",
-      "replace": "mix",
-      "family": "nouns"
+      "find": "holística",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "realm",
-      "replace": "world",
-      "family": "nouns"
+      "find": "intrincado",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "landscape",
-      "replace": "market",
-      "family": "nouns"
+      "find": "intrincada",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "journey",
-      "replace": "process",
-      "family": "nouns"
+      "find": "notável",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "testament to",
-      "replace": "proof of",
-      "family": "nouns"
+      "find": "notáveis",
+      "replace": null,
+      "family": "adjetivos"
     },
     {
-      "find": "cornerstone",
-      "replace": "base",
-      "family": "nouns"
+      "find": "universo do",
+      "replace": "mundo do",
+      "family": "substantivos"
     },
     {
-      "find": "beacon",
-      "replace": "signal",
-      "family": "nouns"
+      "find": "universo da",
+      "replace": "mundo da",
+      "family": "substantivos"
     },
     {
-      "find": "paradigm",
-      "replace": "model",
-      "family": "nouns"
+      "find": "papel fundamental",
+      "replace": "papel importante",
+      "family": "substantivos"
     },
     {
-      "find": "synergy",
-      "replace": "overlap",
-      "family": "nouns"
+      "find": "jornada",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "ecosystem",
-      "replace": "system",
-      "family": "nouns"
+      "find": "panorama",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "treasure trove",
-      "replace": "pile",
-      "family": "nouns"
+      "find": "ecossistema",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "plethora of",
-      "replace": "lots of",
-      "family": "nouns"
+      "find": "sinergia",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "plethora",
-      "replace": "lots",
-      "family": "nouns"
+      "find": "tapeçaria",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "arsenal",
-      "replace": "set",
-      "family": "nouns"
+      "find": "pilares",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "north star",
-      "replace": "goal",
-      "family": "nouns"
+      "find": "divisor de águas",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "moreover",
-      "replace": "also",
-      "family": "connectives"
+      "find": "ampla gama",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "furthermore",
-      "replace": "also",
-      "family": "connectives"
+      "find": "vasta gama",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "additionally",
-      "replace": "also",
-      "family": "connectives"
+      "find": "chave para o sucesso",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "nevertheless",
-      "replace": "still",
-      "family": "connectives"
+      "find": "ferramenta poderosa",
+      "replace": null,
+      "family": "substantivos"
     },
     {
-      "find": "consequently",
-      "replace": "so",
-      "family": "connectives"
+      "find": "significativamente",
+      "replace": null,
+      "family": "advérbios"
     },
     {
-      "find": "thus",
-      "replace": "so",
-      "family": "connectives"
+      "find": "de forma significativa",
+      "replace": null,
+      "family": "advérbios"
     },
     {
-      "find": "hence",
-      "replace": "so",
-      "family": "connectives"
+      "find": "meticulosamente",
+      "replace": "cuidadosamente",
+      "family": "advérbios"
     },
     {
-      "find": "notably",
+      "find": "verdadeiramente",
+      "replace": "realmente",
+      "family": "advérbios"
+    },
+    {
+      "find": "indiscutivelmente",
+      "replace": "sem dúvida",
+      "family": "advérbios"
+    },
+    {
+      "find": "inegavelmente",
+      "replace": "sem dúvida",
+      "family": "advérbios"
+    },
+    {
+      "find": "certamente",
+      "replace": "com certeza",
+      "family": "advérbios"
+    },
+    {
+      "find": "essencialmente",
+      "replace": "basicamente",
+      "family": "advérbios"
+    },
+    {
+      "find": "definitivamente",
+      "replace": null,
+      "family": "advérbios"
+    },
+    {
+      "find": "ademais",
+      "replace": "fora isso",
+      "family": "conectivos"
+    },
+    {
+      "find": "outrossim",
+      "replace": "fora isso",
+      "family": "conectivos"
+    },
+    {
+      "find": "diante disso",
+      "replace": "com isso",
+      "family": "conectivos"
+    },
+    {
+      "find": "consequentemente",
+      "replace": "por isso",
+      "family": "conectivos"
+    },
+    {
+      "find": "primeiramente",
+      "replace": "primeiro",
+      "family": "conectivos"
+    },
+    {
+      "find": "em suma",
+      "replace": "resumindo",
+      "family": "conectivos"
+    },
+    {
+      "find": "em resumo",
+      "replace": "resumindo",
+      "family": "conectivos"
+    },
+    {
+      "find": "em última análise",
+      "replace": "no fim",
+      "family": "conectivos"
+    },
+    {
+      "find": "no que diz respeito",
+      "replace": "em relação",
+      "family": "conectivos"
+    },
+    {
+      "find": "com o intuito de",
+      "replace": "para",
+      "family": "conectivos"
+    },
+    {
+      "find": "com o objetivo de",
+      "replace": "para",
+      "family": "conectivos"
+    },
+    {
+      "find": "mas não menos importante",
       "replace": "",
-      "family": "connectives"
+      "family": "conectivos"
     },
     {
-      "find": "importantly",
+      "find": "além disso",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "dessa forma",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "desta forma",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "sendo assim",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "nesse sentido",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "nesse contexto",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "quando se trata",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "conteúdo de valor",
+      "replace": "conteúdo útil",
+      "family": "jargão"
+    },
+    {
+      "find": "conteúdos de valor",
+      "replace": "conteúdos úteis",
+      "family": "jargão"
+    },
+    {
+      "find": "conteúdo envolvente",
+      "replace": "conteúdo interessante",
+      "family": "jargão"
+    },
+    {
+      "find": "dicas valiosas",
+      "replace": "dicas úteis",
+      "family": "jargão"
+    },
+    {
+      "find": "impactar vidas",
+      "replace": "ajudar pessoas",
+      "family": "jargão"
+    },
+    {
+      "find": "mindset",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "alta performance",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "virada de chave",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "zona de conforto",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "destravar",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "destrave",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "ressignificar",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "agregar valor",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "gerar valor",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "entregar valor",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "próximo nível",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "game changer",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "fora da caixa",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "potencial máximo",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "sua melhor versão",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "protagonista da sua",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "confia no processo",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "confie no processo",
+      "replace": null,
+      "family": "jargão"
+    },
+    {
+      "find": "simplesmente",
       "replace": "",
-      "family": "connectives"
+      "family": "instagram"
     },
     {
-      "find": "ultimately",
-      "replace": "in the end",
-      "family": "connectives"
+      "find": "literalmente",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "in essence",
-      "replace": "basically",
-      "family": "connectives"
+      "find": "imperdível",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "in conclusion",
-      "replace": "so",
-      "family": "connectives"
+      "find": "o algoritmo ama",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "when it comes to",
-      "replace": "with",
-      "family": "connectives"
+      "find": "hackear o algoritmo",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "in order to",
-      "replace": "to",
-      "family": "connectives"
+      "find": "vencer o algoritmo",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "a wide range of",
-      "replace": "many",
-      "family": "connectives"
-    },
-    {
-      "find": "it is worth noting that",
-      "replace": "note that",
-      "family": "connectives"
-    },
-    {
-      "find": "supercharge",
-      "replace": "speed up",
-      "family": "verbs"
-    },
-    {
-      "find": "skyrocket",
-      "replace": "raise",
-      "family": "verbs"
-    },
-    {
-      "find": "unleash",
-      "replace": "release",
-      "family": "verbs"
-    },
-    {
-      "find": "effortlessly",
-      "replace": "easily",
-      "family": "adjectives"
-    },
-    {
-      "find": "captivating",
-      "replace": "interesting",
-      "family": "adjectives"
-    },
-    {
-      "find": "stunning",
-      "replace": "good",
-      "family": "adjectives"
-    },
-    {
-      "find": "breathtaking",
-      "replace": "striking",
-      "family": "adjectives"
-    },
-    {
-      "find": "iconic",
-      "replace": "known",
-      "family": "adjectives"
-    },
-    {
-      "find": "must-have",
-      "replace": "worth having",
-      "family": "adjectives"
-    },
-    {
-      "find": "no-brainer",
-      "replace": "obvious",
-      "family": "nouns"
-    },
-    {
-      "find": "hidden gem",
-      "replace": "good one",
-      "family": "nouns"
-    },
-    {
-      "find": "secret sauce",
-      "replace": "the actual method",
-      "family": "nouns"
-    },
-    {
-      "find": "ultimate guide",
-      "replace": "guide",
-      "family": "nouns"
-    },
-    {
-      "find": "level up",
-      "replace": "improve",
-      "family": "verbs"
-    },
-    {
-      "find": "hack",
-      "replace": "trick",
-      "family": "nouns"
+      "find": "corre que",
+      "replace": null,
+      "family": "instagram"
     }
   ],
   "phrases": [
     {
-      "find": "in today's fast-paced world",
-      "replace": "right now",
-      "family": "openers"
+      "find": "no mundo atual",
+      "replace": "hoje",
+      "family": "aberturas"
     },
     {
-      "find": "in today's digital age",
-      "replace": "right now",
-      "family": "openers"
+      "find": "no mundo de hoje",
+      "replace": "hoje",
+      "family": "aberturas"
     },
     {
-      "find": "in the ever-evolving landscape of",
-      "replace": "in",
-      "family": "openers"
+      "find": "nos dias de hoje",
+      "replace": "hoje",
+      "family": "aberturas"
     },
     {
-      "find": "in the ever-changing world of",
-      "replace": "in",
-      "family": "openers"
+      "find": "nos dias atuais",
+      "replace": "hoje",
+      "family": "aberturas"
     },
     {
-      "find": "let's face it",
-      "replace": "",
-      "family": "openers"
+      "find": "é com muita alegria que",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "here's the thing",
-      "replace": "",
-      "family": "openers"
+      "find": "é com grande alegria que",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "picture this",
-      "replace": "",
-      "family": "openers"
+      "find": "era digital",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "imagine a world where",
-      "replace": "imagine if",
-      "family": "openers"
+      "find": "cenário atual",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "it's no secret that",
-      "replace": "",
-      "family": "openers"
+      "find": "mundo cada vez mais",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "we've all been there",
-      "replace": "",
-      "family": "openers"
+      "find": "um mundo onde",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "let that sink in",
-      "replace": "",
-      "family": "closers"
+      "find": "num mundo onde",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "the choice is yours",
-      "replace": "",
-      "family": "closers"
+      "find": "em constante evolução",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "food for thought",
-      "replace": "",
-      "family": "closers"
+      "find": "vamos explorar",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "the future is here",
-      "replace": "",
-      "family": "closers"
+      "find": "sejamos sinceros",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "what are your thoughts?",
-      "replace": "",
-      "family": "closers"
+      "find": "vamos ser sinceros",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "drop a comment below",
-      "replace": "",
-      "family": "closers"
+      "find": "sem mais delongas",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "at the end of the day",
-      "replace": "",
-      "family": "closers"
+      "find": "todos nós já passamos por isso",
+      "replace": null,
+      "family": "aberturas"
     },
     {
-      "find": "needle-moving",
-      "replace": "useful",
-      "family": "closers"
+      "find": "vale ressaltar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "move the needle",
-      "replace": "make a difference",
-      "family": "closers"
+      "find": "vale destacar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "a testament to",
-      "replace": "proof of",
-      "family": "nouns"
+      "find": "é importante ressaltar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "had the opportunity to",
-      "replace": "got to",
-      "family": "connectives"
+      "find": "é importante destacar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "i am excited to announce",
-      "replace": "",
-      "family": "openers"
+      "find": "é importante lembrar que",
+      "replace": "lembre que",
+      "family": "ressalvas"
     },
     {
-      "find": "i'm thrilled to share",
-      "replace": "",
-      "family": "openers"
+      "find": "é importante notar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "i am humbled to",
-      "replace": "",
-      "family": "openers"
+      "find": "cabe ressaltar que",
+      "replace": "note que",
+      "family": "ressalvas"
     },
     {
-      "find": "without further ado",
-      "replace": "",
-      "family": "openers"
+      "find": "é inegável que",
+      "replace": "sem dúvida",
+      "family": "ressalvas"
     },
     {
-      "find": "buckle up",
-      "replace": "",
-      "family": "openers"
+      "find": "não é segredo que",
+      "replace": "todo mundo sabe que",
+      "family": "ressalvas"
     },
     {
-      "find": "the harsh truth is",
-      "replace": "",
-      "family": "openers"
+      "find": "não é segredo para ninguém que",
+      "replace": "todo mundo sabe que",
+      "family": "ressalvas"
     },
     {
-      "find": "spoiler alert",
-      "replace": "",
-      "family": "openers"
+      "find": "pode-se dizer que",
+      "replace": "dá pra dizer que",
+      "family": "ressalvas"
     },
     {
-      "find": "read that again",
-      "replace": "",
-      "family": "closers"
+      "find": "é fundamental lembrar que",
+      "replace": "lembre que",
+      "family": "ressalvas"
     },
     {
-      "find": "you're welcome",
-      "replace": "",
-      "family": "closers"
+      "find": "é fundamental",
+      "replace": "é importante",
+      "family": "ressalvas"
     },
     {
-      "find": "save this for later",
-      "replace": "",
-      "family": "closers"
+      "find": "o céu é o limite",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "who's with me",
-      "replace": "",
-      "family": "closers"
+      "find": "a escolha é sua",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "stop scrolling",
-      "replace": "",
-      "family": "openers"
+      "find": "fica a reflexão",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "don't scroll past this",
-      "replace": "",
-      "family": "openers"
+      "find": "reflita sobre isso",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "in this video i'm going to show you",
-      "replace": "",
-      "family": "openers"
+      "find": "e lembre-se",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "in today's video",
-      "replace": "",
-      "family": "openers"
+      "find": "o resto é história",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "watch till the end",
-      "replace": "",
-      "family": "openers"
+      "find": "espero que este conteúdo",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "you won't believe",
-      "replace": "",
-      "family": "openers"
+      "find": "espero que esse conteúdo",
+      "replace": null,
+      "family": "fechamentos"
     },
     {
-      "find": "nobody is talking about this",
-      "replace": "few people do this",
-      "family": "openers"
+      "find": "ninguém fala sobre isso",
+      "replace": "pouca gente fala disso",
+      "family": "instagram"
     },
     {
-      "find": "no one is talking about this",
-      "replace": "few people do this",
-      "family": "openers"
+      "find": "ninguém está falando sobre isso",
+      "replace": "pouca gente está falando disso",
+      "family": "instagram"
     },
     {
-      "find": "this changed everything",
-      "replace": "this worked",
-      "family": "openers"
+      "find": "ninguém tá falando sobre isso",
+      "replace": "pouca gente tá falando disso",
+      "family": "instagram"
     },
     {
-      "find": "this is your sign to",
-      "replace": "",
-      "family": "openers"
+      "find": "para de rolar",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "little did i know",
-      "replace": "",
-      "family": "connectives"
+      "find": "pare de rolar",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "fast forward to today",
-      "replace": "now",
-      "family": "connectives"
+      "find": "não passa esse vídeo",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "and just like that",
-      "replace": "",
-      "family": "connectives"
+      "find": "fica até o final",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "the rest is history",
-      "replace": "",
-      "family": "closers"
+      "find": "assiste até o final",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "run don't walk",
-      "replace": "",
-      "family": "closers"
+      "find": "assista até o final",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "trust me on this one",
-      "replace": "",
-      "family": "closers"
+      "find": "salva esse post",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "don't sleep on this",
-      "replace": "",
-      "family": "closers"
+      "find": "salve esse post",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "follow for more",
-      "replace": "",
-      "family": "closers"
+      "find": "salva pra não perder",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "hit follow for more",
-      "replace": "",
-      "family": "closers"
+      "find": "marca aquele amigo",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "double tap if",
-      "replace": "",
-      "family": "closers"
+      "find": "marca alguém que",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "tag someone who needs this",
-      "replace": "",
-      "family": "closers"
+      "find": "marque alguém que",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "let me know in the comments",
-      "replace": "",
-      "family": "closers"
+      "find": "quem precisa ver isso",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "share this with someone who needs it",
-      "replace": "",
-      "family": "closers"
+      "find": "quem precisa ouvir isso",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "the algorithm loves",
-      "replace": "Instagram pushes",
-      "family": "nouns"
+      "find": "segue pra mais",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "beat the algorithm",
-      "replace": "get reach",
-      "family": "nouns"
+      "find": "siga para mais",
+      "replace": null,
+      "family": "instagram"
     },
     {
-      "find": "go viral overnight",
-      "replace": "get reach",
-      "family": "nouns"
+      "find": "deixa seu like",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "deixe seu like",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "comenta aqui embaixo",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "comente abaixo",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "me conta nos comentários",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "vai mudar sua vida",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "ninguém te conta isso",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "o segredo que ninguém te conta",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "você não vai acreditar",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "isso mudou tudo",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "é o seu sinal",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "leia de novo",
+      "replace": null,
+      "family": "instagram"
+    },
+    {
+      "find": "vou te contar um segredo",
+      "replace": null,
+      "family": "instagram"
     }
   ],
   "structures": [
     {
       "id": "not-just",
-      "regex": "(?i)\\bit'?s not (?:just|only) [^.!?\\n]{2,60}[,.] it'?s\\b",
-      "name": "\"It's not just X, it's Y\"",
-      "fix": "Say the one thing you actually mean. Delete the setup half."
+      "regex": "(?i)\\bn[aã]o [ée] (?:s[oó]|apenas|somente) [^.!?\\n]{2,60}[,.;:]\\s*(?:e sim|é)\\b",
+      "name": "\"Não é só X, é Y\"",
+      "fix": "Diga a única coisa que você quer dizer. Corte a metade que só prepara o terreno."
     },
     {
       "id": "not-only",
-      "regex": "(?i)\\bnot only\\b[^.!?\\n]{2,80}\\bbut also\\b",
-      "name": "\"Not only X but also Y\"",
-      "fix": "Split into two sentences, or drop the weaker half."
+      "regex": "(?i)\\bn[aã]o (?:s[oó]|apenas|somente)\\b[^.!?\\n]{2,80}\\b(?:mas|como) tamb[eé]m\\b",
+      "name": "\"Não só X, mas também Y\"",
+      "fix": "Quebre em duas frases, ou corte a metade mais fraca."
     },
     {
       "id": "isnt-about",
-      "regex": "(?i)\\b(?:this|it) is(?:n'?t| not) about [^.!?\\n]{2,60}[.!] it'?s about\\b",
-      "name": "\"It isn't about X. It's about Y.\"",
-      "fix": "Lead with Y. The reversal is the tell."
+      "regex": "(?i)\\bn[aã]o (?:[ée] sobre|se trata de) [^.!?\\n]{2,60}[,.!;]\\s*(?:é sobre|se trata de|mas sim|mas de)\\b",
+      "name": "\"Não é sobre X. É sobre Y.\"",
+      "fix": "Comece pelo Y. A virada é o que entrega o texto."
     },
     {
       "id": "the-result",
-      "regex": "(?i)^\\s*(?:the result|the best part|the kicker|the catch)\\?\\s*$",
-      "name": "One-word rhetorical question line",
-      "fix": "Answer it inline instead of staging a reveal."
+      "regex": "(?im)^\\s*(?:e )?(?:o resultado|a melhor parte|o melhor|o pior|o segredo|o problema|a pegadinha|o detalhe|o motivo|a diferen[cç]a|a sacada|por qu[eê] isso importa)\\?|^\\s*(?:alerta de )?spoiler(?: alert)?\\s*[:!]|\\bsabe (?:o que [ée] (?:o )?mais \\w+|qual [ée] o (?:segredo|problema|truque))\\?",
+      "name": "Revelação encenada (\"O resultado?\", \"E o melhor?\", \"Spoiler:\")",
+      "fix": "Responda direto na frase em vez de montar suspense."
     },
     {
       "id": "heres-what",
-      "regex": "(?i)\\bhere'?s what (?:i|we) learned\\b",
-      "name": "\"Here's what I learned\"",
-      "fix": "State the lesson. Skip the announcement."
+      "regex": "(?im)\\b(?:aqui est[aá]|veja|olha|confira|isso [ée]) o que (?:eu )?aprendi\\b|(?:^|(?<=[.!?] ))\\s*a verdade (?:[ée] que|nua e crua)\\b|\\bvou ser (?:sincer[oa]|honest[oa])(?: com voc[eê])?\\s*[:,]",
+      "name": "Anúncio antes do ponto (\"A verdade é que\", \"Aqui está o que eu aprendi\")",
+      "fix": "Diga a coisa. O anúncio só atrasa."
     },
     {
       "id": "triad",
-      "regex": "(?i)\\b\\w+, \\w+, and \\w+\\.",
-      "name": "Rule-of-three triad",
-      "fix": "Two items or four. Three is the model's default rhythm."
+      "regex": "\\b\\w{3,}, \\w{3,},? e \\w{3,}[.!]",
+      "name": "Trio de palavras (\"foco, disciplina e constância\")",
+      "fix": "Dois itens ou quatro. Três é o ritmo padrão do modelo."
     },
     {
       "id": "rocket",
       "regex": "[\\U0001F680\\U0001F525\\U0001F4A1\\u2728\\U0001F3AF]",
-      "name": "Rocket / fire / bulb / sparkle / dart emoji",
-      "fix": "One emoji max, and not one of these five."
+      "name": "Emoji de foguete / fogo / lâmpada / brilho / alvo",
+      "fix": "No máximo um emoji, e nenhum desses cinco."
     },
     {
       "id": "hashtag-wall",
       "regex": "(?:#\\w+[ \\t]*){5,}",
-      "name": "Hashtag wall (5+)",
-      "fix": "Three hashtags. LinkedIn stopped rewarding the wall."
+      "name": "Paredão de hashtags (5 ou mais)",
+      "fix": "Três hashtags específicas. Paredão de hashtag é cara de post feito por template."
     },
     {
       "id": "as-an-ai",
-      "regex": "(?i)\\bas an ai\\b|\\bas a language model\\b",
-      "name": "Model self-reference",
-      "fix": "Delete the sentence."
+      "regex": "(?i)\\b(?:como|enquanto|sou) uma? (?:ia|intelig[eê]ncia artificial|modelo de linguagem)\\b|\\bn[aã]o tenho (?:opini[oõ]es|sentimentos|emo[cç][oõ]es) pr[oó]pri[ao]s\\b",
+      "name": "Modelo falando de si (\"Como uma IA...\")",
+      "fix": "Apague a frase inteira."
     },
     {
       "id": "in-summary",
-      "regex": "(?i)^\\s*(?:in summary|to summarize|in conclusion)\\b",
-      "name": "Essay-closer opener",
-      "fix": "A post does not need a conclusion paragraph."
+      "regex": "(?im)^\\s*(?:em suma|em resumo|em s[ií]ntese|em conclus[aã]o|para concluir|pra concluir|concluindo|resumindo tudo)\\b",
+      "name": "Fecho de redação escolar (\"Em resumo\", \"Para concluir\")",
+      "fix": "Post não precisa de parágrafo de conclusão. Termine no último ponto que importa."
     },
     {
       "id": "engagement-bait",
-      "regex": "(?i)\\b(?:agree\\?|thoughts\\?|who else\\b|am i wrong\\?)\\s*$",
-      "name": "Reflex engagement bait",
-      "fix": "Ask a question only you could ask, about the specific thing above it."
+      "regex": "(?im)\\b(?:concorda(?:m)?(?: comigo)?|faz sentido|o que (?:voc[eê]s )?acham|o que acha|e voc[eê],? o que acha|e voc[eê]s|quem mais[^.!?\\n]{0,40}|(?:t[oô]|estou) errad[oa]|j[aá] passou por isso|algu[eé]m mais)\\?\\s*$",
+      "name": "Isca de engajamento no automático (\"Concorda?\", \"Faz sentido?\", \"E vocês?\")",
+      "fix": "Faça uma pergunta que só você faria, sobre a coisa específica que vem antes dela."
     },
     {
       "id": "stop-scroll",
-      "regex": "(?im)^\\s*(?:stop scrolling|don'?t scroll|wait[,.]? don'?t scroll)\\b",
-      "name": "\"Stop scrolling\" opener",
-      "fix": "The scroll-stop has to be the claim itself. Asking for attention is the tell that you have not earned it."
+      "regex": "(?im)^\\s*(?:(?:espera|calma|ei)[,.!]?\\s+)?(?:para|pare) de (?:rolar|passar)\\b|^\\s*(?:(?:espera|calma|ei)[,.!]?\\s+)?n[aã]o (?:passa|passe|pula|pule|rola|role)(?: (?:esse|este|o) (?:v[ií]deo|reels?|post)\\b|\\s*[!,.])",
+      "name": "Abertura \"Para de rolar o feed\"",
+      "fix": "O que segura o dedo tem que ser a própria afirmação. Pedir atenção é admitir que o texto ainda não merece."
     },
     {
       "id": "in-this-video",
-      "regex": "(?i)\\b(?:in (?:this|today'?s) (?:video|reel|post)|today i'?m going to show you|i'?m going to (?:show|teach) you how)\\b",
-      "name": "Video preamble (\"in this video I'm going to show you\")",
-      "fix": "Delete it and start at the payoff. The first two seconds decide the whole reel."
+      "regex": "(?i)\\b(?:(?:neste|nesse) (?:v[ií]deo|reels?|post|carrossel),? (?:eu )?(?:vou|vamos|voc[eê] vai|te mostro|te ensino)|no (?:v[ií]deo|reels?|post|carrossel) de hoje|hoje (?:eu )?vou te (?:mostrar|ensinar|contar|explicar)|vou te (?:mostrar|ensinar) como)\\b",
+      "name": "Preâmbulo de vídeo (\"No vídeo de hoje eu vou te mostrar\")",
+      "fix": "Apague e comece na entrega. Os dois primeiros segundos decidem o Reels inteiro."
     },
     {
       "id": "emoji-bullets",
       "regex": "(?m)^\\s*[\\U0001F300-\\U0001FAFF✅➡⬅✔✨]\\s*\\S",
-      "name": "Emoji bullet list",
-      "fix": "Use a hyphen or a line break. Emoji bullets are the single most template-looking thing in a caption."
+      "name": "Lista com emoji no lugar do marcador",
+      "fix": "Use hífen ou quebra de linha. Emoji como marcador é a coisa com mais cara de template numa legenda."
     },
     {
       "id": "caps-shout",
-      "regex": "\\b[A-Z]{3,}\\b(?:\\s+\\b[A-Z]{3,}\\b){2,}",
-      "name": "Three or more shouted words in a row",
-      "fix": "Caps are a volume knob, not a highlighter. One word, at most."
+      "regex": "\\b[A-ZÀ-ÖØ-Ý]{3,}\\b(?:\\s+\\b[A-ZÀ-ÖØ-Ý]{3,}\\b){2,}",
+      "name": "Três ou mais palavras gritadas seguidas",
+      "fix": "Caixa alta é botão de volume, não marca-texto. Uma palavra, no máximo."
     },
     {
       "id": "follow-bait",
-      "regex": "(?i)\\b(?:follow for more|tag someone who|double tap if|share this if|comment below if)\\b",
-      "name": "Reflex follow or tag bait",
-      "fix": "Ask for the one action this post actually earns. The generic ask trains the audience to ignore every ask."
+      "regex": "(?i)\\b(?:segue (?:pra|para) mais|siga (?:pra|para) mais|me segue (?:pra|para)|marca (?:algu[eé]m|aquele amigo|aquela amiga|um amigo|uma amiga|quem)|marque (?:algu[eé]m|um amigo|uma amiga|quem)|salv[ae] (?:esse|este) (?:post|v[ií]deo|reels?|carrossel)|deix[ae] (?:seu|o) like|compartilh[ae] com quem|manda (?:pra|para) quem)\\b",
+      "name": "Pedido de follow ou de marcação no automático",
+      "fix": "Peça a única ação que este post merece. O pedido genérico ensina a audiência a ignorar todos os pedidos."
+    },
+    {
+      "id": "voce-ja",
+      "regex": "(?im)\\bvoc[eê] j[aá] (?:se perguntou|parou (?:pra|para) pensar|imaginou)\\b|^\\s*imagin[ea] (?:s[oó]|isso|a cena)\\b|\\bimagine um mundo\\b",
+      "name": "Gancho hipotético (\"Você já se perguntou...?\", \"Imagine só\")",
+      "fix": "Troque a pergunta pela resposta. Comece no fato concreto, não na hipótese."
+    },
+    {
+      "id": "seja-voce",
+      "regex": "(?i)\\bseja voc[eê] (?:um |uma )?\\w+[^.!?\\n]{0,40}?\\bou\\b",
+      "name": "\"Seja você X ou Y\"",
+      "fix": "Escreva pra uma pessoa só. Texto que fala com todo mundo não fala com ninguém."
     }
   ]
 }

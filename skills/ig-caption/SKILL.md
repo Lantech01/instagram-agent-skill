@@ -1,119 +1,201 @@
 ---
 name: ig-caption
 description: >-
-  Write the Instagram caption - the line that survives the "... more" cut, the
-  body, the single ask, the search terms and the three hashtags - and lint it
-  before it goes out. Use when the user says "write the caption", "caption this",
-  "what do I put in the description", has a reel or a carousel ready and needs
-  the text, or asks about hashtags.
+  Escreve a legenda do Instagram: a linha que sobrevive ao corte do "... mais",
+  o corpo, o pedido único, os termos de busca e as três hashtags, e revisa tudo
+  antes de postar. Use quando o usuário disser "escreve a legenda", "faz a
+  legenda desse reels", "o que eu coloco na legenda", "o que eu escrevo na
+  descrição", "quais hashtags eu uso", "é publi, como eu sinalizo", ou tiver um
+  Reels ou um carrossel pronto e precisar do texto.
 ---
 
 # ig-caption
 
-One tool lives in this folder and it runs:
+Tem uma ferramenta nesta pasta, e ela roda:
 
 ```bash
-python3 caption.py caption.txt
-python3 caption.py caption.txt --keywords "client proposals,agency pricing"
+python3 caption.py legenda.txt
+python3 caption.py legenda.txt --keywords "contrato de prestação de serviço,precificação"
+python3 caption.py legenda.txt --publi
 ```
 
-It prints the caption the way the feed prints it: the first 125 characters in a
-box, everything else behind the tap. Read that box before you read anything
-else you wrote.
+Ela imprime a legenda do jeito que o feed imprime: os primeiros 125 caracteres
+numa caixa, todo o resto escondido atrás do toque. Leia essa caixa antes de ler
+qualquer outra coisa que você escreveu.
 
-## First, decide which job this caption has
+## Primeiro, decida qual é o trabalho dessa legenda
 
-This is the decision that ruins captions when it is skipped.
+É essa decisão que estraga a legenda quando alguém pula ela.
 
-**Job A: the video already hooked them.** A Reel carries its own hook in the
-first two seconds, spoken and on screen. The caption is not a second hook and
-competing with the video is how you lose both. Its job is the ask, the context
-that makes the ask make sense, and the words people search.
+**Trabalho A: o vídeo já fisgou.** Um Reels carrega o próprio gancho nos dois
+primeiros segundos, falado e na tela. A legenda não é um segundo gancho, e
+competir com o vídeo é o jeito de perder os dois. O trabalho dela é o pedido, o
+contexto que faz o pedido fazer sentido e as palavras que as pessoas buscam.
 
-**Job B: the caption is the content.** A photo, a single image, a carousel
-cover that opens a loop. Here line one is the hook and it works exactly like a
-Reel hook: concrete, short, and cut off at a cliff rather than mid-clause.
+**Trabalho B: a legenda é o conteúdo.** Uma foto, uma imagem só, uma capa de
+carrossel que abre um suspense. Aqui a linha um é o gancho e funciona igualzinho
+ao gancho de um Reels: concreta, curta, e cortada num suspense, não no meio da
+frase.
 
-Ask which one you are writing. If the user has a Reel with a strong hook,
-write A and say why.
+Pergunte qual dos dois você está escrevendo. Se o usuário tem um Reels com
+gancho forte, escreva A e diga por quê.
 
-## The shape
+## O formato
 
 ```
-Line 1      125 characters of visible space. Job A: the ask, plainly.
-            Job B: the hook.
-            Never a greeting, never a hashtag, never an emoji as the first
-            character.
-Body        short paragraphs, one line of white space between each. Two to six
-            of them. This is where the search terms live.
-The ask     one. Comment a keyword, save it, or DM. One.
-Hashtags    up to five, on their own line at the bottom, or none.
+Linha 1     125 caracteres de espaço visível. Trabalho A: o pedido, sem
+            rodeio. Trabalho B: o gancho.
+            Nunca um cumprimento ("oi, gente", "bom dia, família"), nunca
+            hashtag, nunca emoji como primeiro caractere.
+Corpo       parágrafos curtos, uma linha em branco entre eles. De dois a seis.
+            É aqui que moram os termos de busca.
+O pedido    um só. Comentar uma palavra-chave, salvar ou chamar na DM. Um.
+Hashtags    até cinco, numa linha só delas no final, ou nenhuma.
 ```
 
-Limit is 2,200 characters and almost nothing needs 2,200. A caption that earns
-the tap and then delivers 600 characters beats one that delivers 1,800.
+O limite é 2.200 caracteres e quase nada precisa de 2.200. Uma legenda que
+ganha o toque e depois entrega 600 caracteres ganha de uma que entrega 1.800.
 
-## Hashtags, honestly
+## Hashtags, sem enrolação
 
-Hashtags are not a reach lever any more, and the platform has now said so with
-a product change. **Instagram capped hashtags at five per post on 18 December
-2025**, down from thirty, telling creators that "using fewer (up to 5) more
-targeted hashtags, rather than many generic ones" performs better. Adam Mosseri
-had already said in February 2025 that hashtags do not work to increase reach
-and are a label, not a distribution lever.
+Hashtag não é mais alavanca de alcance, e a plataforma agora disse isso com uma
+mudança de produto. **O Instagram limitou as hashtags a cinco por post em 18 de
+dezembro de 2025**, contra trinta antes, dizendo aos criadores que usar "menos
+hashtags (até 5) e mais específicas, em vez de muitas genéricas" funciona melhor
+(tradução livre). O Adam Mosseri já tinha dito em fevereiro de 2025 que hashtag
+não aumenta alcance e é uma etiqueta, não uma alavanca de distribuição.
 
-So: up to five, specific, as topic labels. If the user has a block of twenty
-saved in their notes app, that block is now dead weight and the linter will
-fail it.
+Então: até cinco, específicas, como etiqueta de assunto. Se o usuário tem vinte
+hashtags salvas nas notas do celular, prontas pra colar, esse pacote agora é
+peso morto e o revisor dá FALHA nele.
 
-`#viral`, `#fyp`, `#explorepage`, `#foryou` describe nothing. Cut them.
+`#viral`, `#fyp`, `#explorepage`, `#foryou`, `#sigoevolto`, `#instabrasil` não
+descrevem nada. Corte.
 
-## Search terms matter more than hashtags now
+## Termo de busca importa mais que hashtag agora
 
-Instagram search reads the caption text. So the phrase the user wants to be
-found for goes in the caption as a phrase a human would type, in a sentence
-that reads normally. "Client proposals" as words in line three, not
-"#clientproposals" in a block at the bottom.
+A busca do Instagram lê o texto da legenda. Então a frase pela qual o usuário
+quer ser encontrado vai na legenda do jeito que uma pessoa digitaria, numa frase
+que se lê normalmente. "Contrato de prestação de serviço" escrito no quarto
+parágrafo, e não "#contratodeprestacaodeservico" num bloco no fim.
 
-Ask for two or three of those terms, then pass them to the linter:
+Peça dois ou três desses termos e passe pro revisor:
 
 ```bash
-python3 caption.py draft.txt --keywords "client proposals,agency pricing"
+python3 caption.py rascunho.txt --keywords "contrato de prestação de serviço,precificação"
 ```
 
-## Rules
-
-- **No link in the caption.** Captions are not clickable. A URL in the body is
-  dead text that says "I do not use this platform". Bio or DM.
-- **One ask.** Two asks is the same as none. `caption.py` counts them.
-- **The keyword ask needs a keyword people can type.** One word, no spaces, no
-  emoji, and say it out loud in the video too. `Comment CONTRACT` works.
-  `Comment "the contract guide"` does not.
-- **Write the first comment separately** if there is a link. Say so in the
-  receipt.
-- **Emoji as punctuation, not decoration.** The linter flags anything over
-  4 per 100 characters.
-- **Alt text is worth 20 seconds.** For carousels and photos, write it. It is
-  read by screen readers and by Instagram.
-
-## The loop
-
-1. Decide Job A or Job B and say which.
-2. Draft it.
-3. Run `/ig-human` on it. Captions are short, so slop is louder here than
-   anywhere else in the pack.
-4. Run `caption.py` with the user's search terms. Fix every FAIL. Decide on
-   every WARN out loud rather than silently.
-5. Print the copy-ready block, then the receipt:
+Uma legenda de Trabalho A, de uma designer freela, pra um Reels que já abre com
+o gancho:
 
 ```
-CAPTION READY
-job:        A - the reel carries the hook
-visible:    118 of 125 characters used before the cut
-ask:        one, comment CONTRACT
+Comenta CONTRATO que eu te mando a cláusula que me fez parar de devolver dinheiro pra cliente.
+
+Em 2024 eu devolvi R$ 4.200 pra uma cliente que aprovou a identidade visual inteira e pediu o dinheiro de volta nove dias depois.
+
+A cláusula é uma linha só: pagamento na entrega, não na aprovação. Aprovação é sentimento. Entrega tem data.
+
+Se você é freela e fecha contrato de prestação de serviço pelo WhatsApp, ela vale pra você também.
+
+E muda a conversa de precificação inteira, porque o cliente para de tratar o seu prazo como opcional.
+
+#designgrafico #freeladesign #identidadevisual
+```
+
+E o que o revisor devolve:
+
+```
+LEGENDA  ·  586 / 2200 caracteres  ·  3 hashtags  ·  1 pedido(s)
+================================================================
+
+  O QUE O FEED MOSTRA
+  +------------------------------------------------------+
+  | Comenta CONTRATO que eu te mando a cláusula que me   |
+  | fez parar de devolver dinheiro pra cliente.          |
+  |                                                      |
+  | Em 2024 eu devolvi R$ 4.200 p                        |
+  +-------------------------------------------- ... mais +
+
+  OK    TAMANHO          586 / 2200 caracteres
+  OK    PRIMEIRA LINHA   94 caracteres, aparece inteira
+  OK    GANCHO CONCRETO  3 número(s) ou nome(s) na janela visível
+  OK    HASHTAGS         3 tag(s): #designgrafico #freeladesign #identidadevisual
+  OK    LUGAR DAS TAGS   as tags estão depois do corte
+  OK    LINKS            nenhum link morto no texto
+  OK    UM PEDIDO        uma chamada pra ação: comentar uma palavra-chave
+  OK    EMOJI            0 emoji, 0,0 por 100 caracteres
+  OK    BUSCA            2/2 presentes, 0 na janela visível
+----------------------------------------------------------------
+  VEREDITO  PRONTA
+```
+
+Os termos de busca ficarem fora da janela visível é normal no Trabalho A: a
+linha um é do pedido.
+
+## Regras
+
+- **Nada de link na legenda.** Legenda não é clicável. Uma URL no corpo é texto
+  morto que diz "eu não uso essa plataforma". Bio ou DM. "Link na bio" é uma
+  frase que todo brasileiro já entende.
+- **Um pedido.** Dois pedidos é o mesmo que nenhum. O `caption.py` conta.
+- **O pedido de palavra-chave precisa de uma palavra que dê pra digitar.** Uma
+  palavra, sem espaço, sem emoji, em maiúsculas, e dita em voz alta no vídeo
+  também. `Comenta CONTRATO` funciona. `Comenta "o guia do contrato"` não, e o
+  revisor nem conta isso como pedido. `EU QUERO` é o clássico brasileiro e passa
+  porque todo mundo digita no automático, mas é genérico: se você tem resposta
+  automática de DM em mais de um post, use uma palavra que diga de qual post a
+  pessoa veio.
+- **Escreva o primeiro comentário separado** se tiver link. Diga isso no recibo.
+- **Emoji como pontuação, não enfeite.** O revisor sinaliza qualquer coisa acima
+  de 4 a cada 100 caracteres.
+- **Texto alternativo vale 20 segundos.** Em carrossel e foto, escreva. Leitor
+  de tela lê, e o Instagram também.
+- **Publi se diz antes do "... mais".** Post pago ou permuta é publicidade. O
+  Código do CONAR (art. 28) exige que anúncio seja identificado como anúncio,
+  então "publi" ou "publicidade" vai na primeira linha, à vista, e o post usa a
+  marcação de parceria paga do Instagram. Um `#publi` escondido no fim não serve
+  aqui. Rode com `--publi`: o revisor dá FALHA se a legenda não diz, AVISO se só
+  diz depois do corte. Se a legenda já menciona publi, ele faz essa checagem
+  sozinho. Não é parecer jurídico.
+
+A mesma legenda de publi em três versões (sem marcação, com `#publi` no fim, e
+com `Publi @planilhei:` abrindo a linha um), linha PUBLI de cada rodada:
+
+```bash
+python3 caption.py publi.txt --publi
+```
+
+```
+  FALHA PUBLI            o post é publi, mas a legenda não diz. Escreva "publi" ou "publicidade" na primeira linha e use a marcação de parceria paga do Instagram
+  AVISO PUBLI            a marcação de publicidade só aparece depois do "... mais". Publicidade tem que ser identificada com clareza (CONAR, art. 28): suba pra primeira linha
+  OK    PUBLI            a marcação de publicidade aparece antes do "... mais"
+```
+
+Conte com isso: `Publi @marca:` come uns 15 a 20 caracteres da linha um. No
+teste, só colar a marcação na frente de uma linha de 124 caracteres levou ela
+pra 142, e o pedido foi cortado no meio (AVISO em PRIMEIRA LINHA). Reescreva a
+linha pra caber, não empurre o pedido pra depois do corte.
+
+## O ciclo
+
+1. Decida Trabalho A ou Trabalho B e diga qual.
+2. Escreva o rascunho.
+3. Rode `/ig-human` nele. Legenda é curta, então clichê grita mais aqui do que
+   em qualquer outro lugar do pacote.
+4. Rode o `caption.py` com os termos de busca do usuário, e com `--publi` se o
+   post é pago ou permuta. Corrija toda FALHA. Decida sobre todo AVISO em voz
+   alta, não em silêncio.
+5. Imprima o bloco pronto pra copiar e depois o recibo:
+
+```
+LEGENDA PRONTA
+trabalho:   A - o Reels carrega o gancho
+visível:    94 de 125 caracteres usados antes do corte
+pedido:     um, comentar CONTRATO
 hashtags:   3
-search:     "client proposals" in line 3, "agency pricing" in line 5
-linter:     READY
+busca:      "contrato de prestação de serviço" no 4º parágrafo, "precificação" no 5º
+publi:      não
+revisor:    PRONTA
 ```
 
-Nothing is posted. The user pastes it.
+Nada é postado. O usuário cola.
