@@ -172,6 +172,9 @@ def pass_lexical(text, lex):
     text = re.sub(r"(?m)^[ \t]*(?:[,.;:]+[ \t]*)+", "", text)
     text = re.sub(r"(?m)^[ \t](?=\S)", "", text)       # um espaço que sobrou de uma exclusão.
                                                       # Recuo maior é de propósito.
+    # Apagar a primeira palavra de uma frase deixa a vírgula dela pra trás
+    # ("plano. , funciona"). Some com a vírgula antes de colar a pontuação.
+    text = re.sub(r"([.!?])[ \t]+[,;:]+[ \t]*", r"\1 ", text)
     text = re.sub(r"\s+([,.;:!?])", r"\1", text)
     text = re.sub(r",\s*([,.;:!?])", r"\1", text)      # um travessão virou vírgula e
                                                       # depois a oração seguinte sumiu
@@ -223,7 +226,8 @@ def restore_capitals(original, text):
     starts = re.findall(r"(?:^|[.!?]\s+|\n)\s*([A-Za-zÀ-ÖØ-öø-ÿ])", original)
     if not starts or sum(1 for c in starts if c.isupper()) * 2 < len(starts):
         return text
-    return re.sub(r"(?:^|(?<=[.!?] )|(?<=[.!?]\n)|(?<=\n))\s*([a-zß-öø-ÿ])",
+    # Reticências no meio da frase ("então... vamos lá") não abrem frase nova.
+    return re.sub(r"(?:^|(?<=[.!?] )(?<!\.\.\. )|(?<=[.!?]\n)|(?<=\n))\s*([a-zß-öø-ÿ])",
                   lambda m: m.group(0)[:-1] + m.group(1).upper(), text)
 
 

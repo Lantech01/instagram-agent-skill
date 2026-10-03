@@ -55,6 +55,9 @@ NUMBERS = re.compile(
     r"|(?i:\b(?:dois|duas|tr[eê]s|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|"
     r"quinze|vinte|trinta|quarenta|cinquenta|cem|mil|milh[aã]o|milh[oõ]es|reais)\b)")
 PROPER = re.compile(rf"(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b", re.MULTILINE)
+# O mesmo que o humanize.py protege: link, e-mail, hashtag e menção não são
+# texto corrido, então clichê dentro deles não conta.
+PROTECTED = re.compile(r"https?://\S+|www\.\S+|\S+@\S+\.\S+|(?<!\w)[#@][\w.]*\w")
 
 
 def clamp(n):
@@ -115,7 +118,7 @@ def check_slop(text, lex):
         return 50.0, "vazio"
     # Do termo mais longo pro mais curto, apagando o que já foi contado, pra
     # "mergulhar de cabeça" não contar de novo como "mergulhar".
-    work, hits, found = text, 0, []
+    work, hits, found = PROTECTED.sub(" ", text), 0, []
     for entry in sorted(lex["words"] + lex["phrases"], key=lambda e: -len(e["find"])):
         pattern = lexicon_pattern(entry["find"])
         n = len(pattern.findall(work))

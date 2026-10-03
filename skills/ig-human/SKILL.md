@@ -21,9 +21,9 @@ python3 detect.py rascunho.txt                   # dá nota, cinco checagens
 python3 detect.py antes.txt depois.txt           # prova a diferença
 ```
 
-As duas leem o `slop.json`: <<N_TERMOS>> palavras e expressões de clichê em
-português do Brasil, 18 classes de caracteres invisíveis, 11 trocas
-tipográficas e <<N_ESTRUTURAS>> vícios de estrutura. O último bloco de cada
+As duas leem o `slop.json`: 213 palavras e expressões de clichê em português
+do Brasil, 18 classes de caracteres invisíveis, 11 trocas tipográficas e 18
+vícios de estrutura. O último bloco de cada
 lista é do Instagram brasileiro, o vocabulário que só aparece em legenda e
 locução. O arquivo foi feito pra ser editado. Se o usuário tem uma palavra que
 ele sempre usa e o léxico arranca, tire do arquivo.
@@ -54,17 +54,22 @@ Travessão de diálogo no começo da linha também sai.
 
 **3. O léxico de clichês.** "Utilizar" vira "usar", "alavancar" e
 "potencializar" viram "melhorar", "desvendar" vira "entender", "proporcionar"
-vira "oferecer". Mais o bloco do Instagram: "para de rolar o feed", "fica até
-o final", "salva esse post", "marca aquele amigo", "segue pra mais", "o
-algoritmo ama", "corre que". Cada um é trocado por uma palavra simples ou
-apagado, preservando maiúsculas e sem mexer em links, hashtags e menções.
+vira "oferecer", "no mundo atual" vira "hoje", "vale ressaltar que" vira
+"note que". Do bloco do Instagram: "conteúdo de valor" vira "conteúdo útil",
+"impactar vidas" vira "ajudar pessoas", "ninguém fala sobre isso" vira "pouca
+gente fala disso", e "simplesmente" é apagado. Tudo preservando maiúsculas e
+sem mexer em links, hashtags e menções.
 
 **Em português, muita troca automática sai errada.** Verbo conjuga,
-adjetivo concorda, preposição contrai ("no", "na", "num"). Por isso
-<<N_SINALIZADOS>> termos do léxico são só **sinalizados**: contam na nota e
-aparecem no relatório com "-> (reescreva você)", mas o texto fica como
-estava. "Mergulhar de cabeça", "jornada", "no mundo atual", "vale ressaltar
-que", "é fundamental" estão nesse grupo. Frase quebrada é pior que clichê.
+adjetivo concorda, preposição contrai ("no", "na", "num"), e muita palavra de
+clichê tem um sentido literal normal ("jornada de trabalho"). Por isso 119
+dos 213 termos são só **sinalizados**: contam na nota e aparecem no relatório
+com "-> (reescreva você)", mas o texto fica como estava. "Mergulhar",
+"jornada", "além disso" e "dessa forma" estão nesse grupo, e também os
+pedidos prontos do Instagram ("para de rolar", "fica até o final", "salva
+esse post", "marca aquele amigo", "segue pra mais", "o algoritmo ama", "corre
+que"), porque apagar um deles deixa pedaço de frase pra trás. Frase quebrada
+é pior que clichê.
 
 ## O que NÃO é corrigido automaticamente
 
@@ -78,6 +83,7 @@ de uma frase exige julgamento:
 - Gancho hipotético: "Você já se perguntou...?", "Imagine só"
 - "Seja você X ou Y"
 - Fecho de redação escolar: "Em resumo", "Para concluir"
+- Modelo falando de si: "Como uma IA..."
 - O preâmbulo de vídeo: "no vídeo de hoje eu vou te mostrar"
 - Abertura "para de rolar o feed"
 - Lista com emoji no lugar do marcador, e emoji de foguete, fogo, lâmpada

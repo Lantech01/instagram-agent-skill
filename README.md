@@ -189,7 +189,61 @@ python3 detect.py rascunho.txt                # dá nota, cinco checagens
 python3 detect.py antes.txt depois.txt        # prova a diferença
 ```
 
-<<HUMANIZADOR>>
+**O que sai automaticamente:**
+
+- **Caracteres invisíveis.** Espaços e junções de largura zero, word joiners,
+  hífens suaves, BOMs, caracteres de tag Unicode, separadores invisíveis,
+  espaços rígidos e estreitos. Seu teclado não produz isso. Eles sobrevivem ao
+  copiar e colar e são invisíveis em qualquer editor que você tenha.
+- **Tipografia.** Travessão vira vírgula, meia-risca vira hífen, aspas curvas
+  viram retas, reticências de um caractere viram três pontos, e a pontuação
+  órfã que isso deixa é limpa.
+- **O léxico.** 213 palavras e expressões de clichê em português do Brasil,
+  em [`slop.json`](skills/ig-human/slop.json): o português de ChatGPT ("no
+  mundo atual", "vale ressaltar que", "alavancar", "utilizar"), o jargão de
+  coach ("virada de chave", "conteúdo de valor") e o bloco do Instagram
+  brasileiro ("para de rolar o feed", "fica até o final", "salva esse post",
+  "marca aquele amigo", "segue pra mais", "o algoritmo ama"). O arquivo foi
+  feito pra ser editado.
+
+**Em português, a maior parte do léxico é sinalizada, não trocada.** Verbo
+conjuga, adjetivo concorda, preposição contrai, e muita palavra de clichê tem
+sentido literal normal ("jornada de trabalho"). Uma troca automática que
+quebra a frase é pior que o clichê. Então 94 termos são trocados ou apagados,
+e 119 só contam na nota e aparecem no relatório com "-> (reescreva você)".
+Links, hashtags e menções nunca são reescritos.
+
+**O que é apontado em vez de corrigido:** "não é só X, é Y", "não é sobre X,
+é sobre Y", trios de palavras, revelação encenada ("O resultado?", "E o
+melhor?"), "você já se perguntou...?", o preâmbulo de vídeo, lista com emoji,
+três palavras gritadas seguidas, paredão de hashtag, isca de seguidor no
+automático, frases todas do mesmo tamanho. Mudar o formato de uma frase exige
+julgamento, então isso volta pra reescrita em vez de ser estragado por uma
+regex.
+
+Rodando numa legenda escrita pra ser a pior possível:
+
+```
+  RITMO         ###################.....  78,7
+  CONCRETUDE    ############............  48,3    3 marcadores concretos, 3,2 a cada 100 palavras
+  CLICHÊS       ........................   0,0    19 termos de clichê, 20,0 a cada 100 palavras
+  DIGITAIS      #################.......  72,7    1 travessão
+  VOZ           ######..................  23,1    16 vícios de estrutura
+  --------------------------------------------------------------
+  NOTA HUMANA   ######..................  26,7   SINALIZADO
+```
+
+Depois do `humanize.py`, sem reescrever nada na mão:
+
+```
+  26,7 SINALIZADO  ->  32,3 SINALIZADO   (+5,6)
+```
+
+No original em inglês, a mesma passada automática levava a pior legenda de
+32,5 pra 79,7. Em português ela anda bem menos, porque troca bem menos: o
+relatório devolve 12 clichês e 7 vícios de estrutura pra reescrever, e é a
+reescrita que leva a nota pra APROVADO. O `/ig-human` faz essa reescrita
+antes de te mostrar qualquer coisa.
 
 ### O swipe file
 
@@ -315,7 +369,7 @@ skills/ig-reel/hooks.json          26 fórmulas de gancho: modelo, exemplo, vers
 skills/ig-reel/hookscore.py        o painel de cinco propriedades do gancho
 skills/ig-reel/beats.py            roteiro pra roteiro cronometrado
 skills/ig-caption/caption.py       a prévia do corte e o revisor de legenda
-skills/ig-human/slop.json          <<LEXICO>>
+skills/ig-human/slop.json          o léxico: 213 termos, 18 classes invisíveis, 18 vícios de estrutura
 skills/ig-human/humanize.py        as três passadas de limpeza
 skills/ig-human/detect.py          o painel de cinco checagens
 skills/ig-viral/swipe.py           ranking por múltiplo e classificação de fórmula

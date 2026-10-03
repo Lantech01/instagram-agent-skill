@@ -96,9 +96,9 @@ lista separada com os tempos, e depois:
 ```
 REELS PRONTO
 gancho:       #1 Confissão de Custo, nota 77,8 FORTE
-duração:      20,0s em 8 batidas a 165 ppm
+duração:      21,8s em 8 batidas a 165 ppm
 na tela:      5 cartelas
-humanizador:  0 marcas removidas, nota humana {{nota}} {{veredito}}
+humanizador:  0 marcas removidas, nota humana 75,6 APROVADO
 legenda:      rode /ig-caption em seguida
 
 Responda "sim" pra registrar, ou me diga o que mudar.
@@ -131,7 +131,7 @@ Escreva separado, sempre. Ele é lido antes de ser ouvido.
 ## Regras que fazem diferença
 
 - **Uma ideia por Reels.** Se o roteiro tem duas, são dois Reels. Diga isso.
-- **Número em vez de adjetivo.** "R\$ 4.200" ganha de "muito dinheiro". Se o
+- **Número em vez de adjetivo.** "R$ 4.200" ganha de "muito dinheiro". Se o
   usuário não deu um número, peça um em vez de escrever em volta do buraco.
 - **Corte a introdução.** Sem "oi, gente", sem "no vídeo de hoje", sem nome,
   sem vinheta de logo. O vídeo começa na frase que você normalmente diria no
@@ -168,18 +168,28 @@ o #9 não diz nada checável (CONCRETUDE 15).
 ```
 
 ```
-ROTEIRO CRONOMETRADO  ·  55 palavras  ·  ~20,0s a 165 ppm  ·  meta 20s
+ROTEIRO CRONOMETRADO  ·  60 palavras  ·  ~21,8s a 165 ppm  ·  meta 20s
   0:00,0   2,5s  GANCHO     Perdi quatro horas por semana formatando proposta.
   0:02,5   2,2s             Por dois anos. Umas quatrocentas horas.
-  0:04,7   2,9s             Aí eu montei um modelo com quatro blocos.
-  0:07,6   1,4s             Escopo, preço e prazo.
-  0:09,1   3,3s  MEIO       E o que acontece se o cliente disser não.
-  0:12,4   2,5s             Hoje a proposta sai em vinte minutos.
-  0:14,9   2,9s             Comenta MODELO que eu te mando o meu.
-  0:17,8   2,2s  CTA        Quatro horas por semana de volta.
+  0:04,7   4,0s             Aí montei um modelo de quatro blocos que eu preencho igual.
+  0:08,7   2,5s  MEIO       Primeiro o escopo. Depois preço e prazo.
+  0:11,3   4,0s             E no fim, o que acontece se o cliente disser não.
+  0:15,3   1,1s             Hoje? Vinte minutos.
+  0:16,4   3,3s             Comenta MODELO que eu mando o meu pra você.
+  0:19,6   2,2s  CTA        Quatro horas por semana de volta.
   - Loop: a última batida repete "horas, quatro, semana" do gancho.
-  - Duração dentro da meta (20,0s para 20s).
+  - Duração dentro da meta (21,8s para 20s).
+
+NA TELA
+  0:00   4 HORAS POR SEMANA
+  0:02   2 ANOS. 400 HORAS.
+  0:05   UM MODELO, 4 BLOCOS
+  0:15   20 MINUTOS
+  0:16   COMENTA "MODELO"
 ```
 
 A primeira versão desse roteiro levava 23,6s, com gancho de 3,6s e três
-batidas acima de 4s. Foi o `beats.py` que mostrou onde cortar.
+batidas acima de 4s: foi o `beats.py` que mostrou onde cortar. A segunda
+passava no cronômetro, mas tirou 56,5 (REVISAR) no `detect.py`, com todas as
+frases do mesmo tamanho e um trio ("escopo, preço e prazo"). Duas rodadas é
+normal.

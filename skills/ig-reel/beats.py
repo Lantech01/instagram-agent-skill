@@ -143,7 +143,7 @@ def analyse(raw, wpm=165, target=None):
             "flags": [],
         })
         clock += dur
-    total = clock
+    total = round(clock, 2)      # o mesmo número no cabeçalho e nas notas
 
     # Marca as posições em torno das quais um Reels é construído.
     for r in rows:
@@ -210,7 +210,7 @@ def analyse(raw, wpm=165, target=None):
 
     return {
         "wpm": wpm, "target": target,
-        "total_seconds": round(total, 2),
+        "total_seconds": total,
         "total_words": sum(r["words"] for r in rows),
         "beats": rows,
         "notes": notes,

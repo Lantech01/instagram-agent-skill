@@ -632,21 +632,6 @@
       "family": "conectivos"
     },
     {
-      "find": "dessa forma",
-      "replace": "assim",
-      "family": "conectivos"
-    },
-    {
-      "find": "desta forma",
-      "replace": "assim",
-      "family": "conectivos"
-    },
-    {
-      "find": "sendo assim",
-      "replace": "então",
-      "family": "conectivos"
-    },
-    {
       "find": "diante disso",
       "replace": "com isso",
       "family": "conectivos"
@@ -698,6 +683,21 @@
     },
     {
       "find": "além disso",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "dessa forma",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "desta forma",
+      "replace": null,
+      "family": "conectivos"
+    },
+    {
+      "find": "sendo assim",
       "replace": null,
       "family": "conectivos"
     },
@@ -984,11 +984,6 @@
       "family": "ressalvas"
     },
     {
-      "find": "é interessante notar que",
-      "replace": "note que",
-      "family": "ressalvas"
-    },
-    {
       "find": "cabe ressaltar que",
       "replace": "note que",
       "family": "ressalvas"
@@ -1125,11 +1120,6 @@
     },
     {
       "find": "marca aquele amigo",
-      "replace": null,
-      "family": "instagram"
-    },
-    {
-      "find": "marca aquela amiga",
       "replace": null,
       "family": "instagram"
     },
@@ -1292,8 +1282,8 @@
     },
     {
       "id": "engagement-bait",
-      "regex": "(?im)\\b(?:concorda(?:m)?(?: comigo)?|faz sentido|o que (?:voc[eê]s? )?acha(?:m)?|e voc[eê]s?|quem mais[^.!?\\n]{0,40}|(?:t[oô]|estou) errad[oa]|j[aá] passou por isso|algu[eé]m mais)\\?\\s*$",
-      "name": "Isca de engajamento no automático (\"Concorda?\", \"Faz sentido?\", \"E você?\")",
+      "regex": "(?im)\\b(?:concorda(?:m)?(?: comigo)?|faz sentido|o que (?:voc[eê]s )?acham|o que acha|e voc[eê],? o que acha|e voc[eê]s|quem mais[^.!?\\n]{0,40}|(?:t[oô]|estou) errad[oa]|j[aá] passou por isso|algu[eé]m mais)\\?\\s*$",
+      "name": "Isca de engajamento no automático (\"Concorda?\", \"Faz sentido?\", \"E vocês?\")",
       "fix": "Faça uma pergunta que só você faria, sobre a coisa específica que vem antes dela."
     },
     {
@@ -1304,7 +1294,7 @@
     },
     {
       "id": "in-this-video",
-      "regex": "(?i)\\b(?:(?:neste|nesse) (?:v[ií]deo|reels?|post|carrossel)|no (?:v[ií]deo|reels?|post|carrossel) de hoje|hoje (?:eu )?vou te (?:mostrar|ensinar|contar|explicar)|vou te (?:mostrar|ensinar) como)\\b",
+      "regex": "(?i)\\b(?:(?:neste|nesse) (?:v[ií]deo|reels?|post|carrossel),? (?:eu )?(?:vou|vamos|voc[eê] vai|te mostro|te ensino)|no (?:v[ií]deo|reels?|post|carrossel) de hoje|hoje (?:eu )?vou te (?:mostrar|ensinar|contar|explicar)|vou te (?:mostrar|ensinar) como)\\b",
       "name": "Preâmbulo de vídeo (\"No vídeo de hoje eu vou te mostrar\")",
       "fix": "Apague e comece na entrega. Os dois primeiros segundos decidem o Reels inteiro."
     },
