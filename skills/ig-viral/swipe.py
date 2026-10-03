@@ -127,6 +127,8 @@ def analyse(rows, formulas):
     for r in rows:
         base = r.get("median") or r.get("followers") or 0
         r["baseline"] = base
+        r["baseline_kind"] = ("mediana" if r.get("median") else
+                              "seguidores" if r.get("followers") else None)
         r["outlier"] = round(r["views"] / base, 2) if base else None
         r["formula_id"], r["formula"] = classify(r["hook"], formulas)
         r["words"] = len(WORD_RE.findall(r["hook"]))
@@ -148,6 +150,10 @@ def analyse(rows, formulas):
         counts[r["formula"]] = counts.get(r["formula"], 0) + 1
     return {
         "baseline": "mediana da conta" if used_median else "número de seguidores",
+        # Lote misto: as linhas sem mediana caem pra seguidores, e o múltiplo
+        # delas não é comparável com o das outras. Isso tem que aparecer.
+        "follower_rows": (sum(1 for r in ranked if r["baseline_kind"] == "seguidores")
+                          if used_median else 0),
         "n": len(ranked),
         "accounts": len({r.get("account", "") for r in ranked}),
         "reels": ranked,
@@ -162,17 +168,23 @@ def analyse(rows, formulas):
 
 def render(a, out=sys.stdout):
     head = (f"SWIPE FILE  ·  {a['n']} reels  ·  {a['accounts']} contas  ·  "
-            f"base: {a['baseline']}")
+            f"base: {a['baseline']}"
+            + (f" ({a['follower_rows']} por seguidores, com *)" if a["follower_rows"] else ""))
     print("\n" + head, file=out)
     print("=" * max(len(head), 80), file=out)
     for r in a["reels"]:
-        mult = f"{br(r['outlier'])}x" if r["outlier"] else "   ?"
+        mark = "*" if a["follower_rows"] and r["baseline_kind"] == "seguidores" else " "
+        mult = f"{br(r['outlier'])}x{mark}" if r["outlier"] else "   ? "
         score = f"{r['hook_score']:.0f}" if r["hook_score"] is not None else " -"
         fid = f"#{r['formula_id']:<2}" if r["formula_id"] else "-  "
-        print(f"  {mult:>7}  gancho {score:>3}  {fid} {r['formula'][:22]:<22} "
+        print(f"  {mult:>8}  gancho {score:>3}  {fid} {r['formula'][:22]:<22} "
               f"{r.get('account', '')[:16]:<16} {milhar(r['views']):>10}", file=out)
         print(f"           \"{r['hook'][:96]}\"", file=out)
     print("-" * max(len(head), 80), file=out)
+    if a["follower_rows"]:
+        print(f"  * {a['follower_rows']} linha(s) sem mediana: o múltiplo usa o número de "
+              "seguidores e não é comparável\n    com o das outras. Pegue a mediana dessas "
+              "contas antes de confiar no ranking.", file=out)
     print("O QUE ESTÁ FUNCIONANDO NESTE LOTE", file=out)
     if a["top_formulas"]:
         print("  terço de cima, por múltiplo:  "
@@ -197,7 +209,8 @@ def to_markdown(a):
         mult = f"{br(r['outlier'])}x" if r["outlier"] else "?"
         score = br(r["hook_score"]) if r["hook_score"] is not None else "-"
         lines += [f"## {mult}  {r['formula']}  ({r.get('account', '')})",
-                  f"- views: {milhar(r['views'])}  base: {milhar(r['baseline'])}",
+                  f"- views: {milhar(r['views'])}  base: {milhar(r['baseline'])}"
+                  + (f" ({r['baseline_kind']})" if r["baseline_kind"] else ""),
                   f"- nota do gancho: {score}  palavras: {r['words']}",
                   f"- gancho: \"{r['hook']}\"", ""]
     return "\n".join(lines) + "\n"
@@ -231,7 +244,9 @@ def main():
         render(a)
     if args.out:
         path = os.path.expanduser(args.out)
-        os.makedirs(os.path.dirname(path), exist_ok=True)
+        folder = os.path.dirname(path)
+        if folder:                                # "--out swipe.md" não tem pasta
+            os.makedirs(folder, exist_ok=True)
         open(path, "w", encoding="utf-8").write(to_markdown(a))
         print(f"gravado em {path}", file=sys.stderr)
 

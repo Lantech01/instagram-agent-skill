@@ -261,13 +261,13 @@ como "412.000", "412 mil", "48k" ou "1,2 mi".
 ```
 SWIPE FILE  ·  4 reels  ·  4 contas  ·  base: mediana da conta
 ================================================================================
-    38,5x  gancho  79  #3  Ninguém Te Conta       @conta_a            412.000
+    38,5x   gancho  79  #3  Ninguém Te Conta       @conta_a            412.000
            "ninguém te conta que os seus primeiros 30 reels são pra flopar mesmo"
-    11,2x  gancho  51  #9  Rouba Isso             @conta_c            180.000
+    11,2x   gancho  51  #9  Rouba Isso             @conta_c            180.000
            "rouba esse follow-up de quatro linhas que eu levei dois anos pra montar"
-     7,5x  gancho  51  #2  Pare de Fazer Isso     @conta_d             71.000
+     7,5x   gancho  51  #2  Pare de Fazer Isso     @conta_d             71.000
            "para de postar todo dia e começa a responder comentário"
-     1,3x  gancho  34  -   sem classificação      @conta_e             52.000
+     1,3x   gancho  34  -   sem classificação      @conta_e             52.000
            "eu tava conversando com uma amiga outro dia sobre isso"
 ```
 
