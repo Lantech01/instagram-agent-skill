@@ -35,7 +35,7 @@ LOWER = "a-zß-öø-ÿ"
 # Concreto: dinheiro, um número com dígitos, ou um nome próprio no meio da
 # frase (a primeira palavra de cada frase não conta).
 CONCRETE_RE = re.compile(
-    rf"(?:R|US)?\$\s?\d|\b\d[\d.,]*\b|(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b",
+    rf"(?:R|US)?\$\s?\d|\b\d[\d.,]*\b|(?<![.!?]\s)(?<!^)(?<![.!?][\"”'’)]\s)(?<!^[\"“'‘(])(?<![.!?]\s[\"“'‘(])\b[{UPPER}][{LOWER}]{{2,}}\b",
     re.MULTILINE)
 # Número falado também é concreto: "cinco horas" é tão checável quanto "5h".
 SPOKEN_NUMBERS = {
