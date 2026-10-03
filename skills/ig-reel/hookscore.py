@@ -52,8 +52,9 @@ NUMBER_RE = re.compile(
     r"|min\b|minutos?\b|dias?\b|semanas?\b|m[eê]s\b|meses\b|anos?\b)?",
     re.IGNORECASE)
 # Nome próprio: maiúscula no meio da frase. A primeira palavra da frase não
-# conta, porque toda frase começa com maiúscula.
-PROPER_RE = re.compile(rf"(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b")
+# conta, porque toda frase começa com maiúscula, nem quando a frase abre ou
+# fecha aspas ("Precisa pagar?" Recebo essa toda semana).
+PROPER_RE = re.compile(rf"(?<![.!?]\s)(?<!^)(?<![.!?][\"”'’)]\s)(?<!^[\"“'‘(])(?<![.!?]\s[\"“'‘(])\b[{UPPER}][{LOWER}]{{2,}}\b")
 HASHTAG_RE = re.compile(r"(?:^|\s)#\w+")
 EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF☀-➿]")
 PRICE_RE = re.compile(r"(?:R|US)?\$\s?\d")
@@ -246,12 +247,13 @@ def check_frontload(text):
         if low[:len(parts)] == parts:
             penalty, hit_opener = 30, weak
             break
+    propers = set(PROPER_RE.findall(text))
     payload = None
     for i, token in enumerate(low):
         if (token in STAKES or token in SPOKEN_NUMBERS
                 or (i == 0 and stop_command(text)) or token in MONEY_WORDS
                 or NUMBER_RE.match(w[i]) or PRICE_RE.match(w[i])
-                or (i and re.match(rf"[{UPPER}][{LOWER}]{{2,}}$", w[i]))):
+                or w[i] in propers):
             payload = i
             break
     if payload is None:

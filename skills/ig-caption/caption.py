@@ -51,7 +51,7 @@ LINK_RE = re.compile(r"https?://\S+|\bwww\.\S+"
                      re.IGNORECASE)
 EMOJI_RE = re.compile(r"[\U0001F300-\U0001FAFF☀-➿←-⇿️]")
 CONCRETE_RE = re.compile(
-    rf"(?:R|US)?\$\s?\d|\b\d[\d.,]*\b|(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b",
+    rf"(?:R|US)?\$\s?\d|\b\d[\d.,]*\b|(?<![.!?]\s)(?<!^)(?<![.!?][\"”'’)]\s)(?<!^[\"“'‘(])(?<![.!?]\s[\"“'‘(])\b[{UPPER}][{LOWER}]{{2,}}\b",
     re.MULTILINE)
 SPOKEN_NUMBERS_RE = re.compile(
     r"(?i)\b(?:dois|duas|tr[eê]s|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|"

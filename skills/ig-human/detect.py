@@ -54,7 +54,7 @@ NUMBERS = re.compile(
     r"(?:R|US)?\$\s?\d|\b\d[\d.,]*%?"
     r"|(?i:\b(?:dois|duas|tr[eê]s|quatro|cinco|seis|sete|oito|nove|dez|onze|doze|"
     r"quinze|vinte|trinta|quarenta|cinquenta|cem|mil|milh[aã]o|milh[oõ]es|reais)\b)")
-PROPER = re.compile(rf"(?<![.!?]\s)(?<!^)\b[{UPPER}][{LOWER}]{{2,}}\b", re.MULTILINE)
+PROPER = re.compile(rf"(?<![.!?]\s)(?<!^)(?<![.!?][\"”'’)]\s)(?<!^[\"“'‘(])(?<![.!?]\s[\"“'‘(])\b[{UPPER}][{LOWER}]{{2,}}\b", re.MULTILINE)
 # O mesmo que o humanize.py protege: link, e-mail, hashtag e menção não são
 # texto corrido, então clichê dentro deles não conta.
 PROTECTED = re.compile(r"https?://\S+|www\.\S+|\S+@\S+\.\S+|(?<!\w)[#@][\w.]*\w")
